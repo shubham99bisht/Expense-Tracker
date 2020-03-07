@@ -5,7 +5,7 @@ from torch.utils import data
 
 from my_utils import robust_padding
 
-VOCAB = ascii_uppercase + digits + punctuation + " \t\n"
+VOCAB = ascii_uppercase +ascii_lowercase +digits + "&$-,.%=/: \t\n"
 
 
 class MyDataset(data.Dataset):

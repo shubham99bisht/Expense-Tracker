@@ -1,10 +1,10 @@
 Lifestyle International Pvt Ltd
 Phoenlx Market City
-(Shop #:18-F26 #:142 Velachery Maln RD )
-Velachery CHENNAI ~ 600042
+Shop :18-F26 :142 Velachery Maln RD 
+Velachery CHENNAI  600042
 Tall Free No:1800-208-2444
-lifestyle. feedback@] andmarkgroup. in
-CIN-U52190KA| 997PTCO46775
+lifestyle. feedback andmarkgroup. in
+CIN-U52190KA 997PTCO46775
 
 Billing Location: TAMILNADU
 GSTIN -33AAACL2937J1ZL
@@ -32,13 +32,13 @@ Total Number of Ttems/dty: hee
 Tax Delatls
 Tax Desc Taxable Tax
 A SGST Q.5M 665.71 16.64
-B CGST (2.5%) 665.7) 16,64
-C CGST (61) 1, 784,82 107,09
-0 SGST (64) 1, 784.82 107.09
+B CGST 2.5% 665.7 16,64
+C CGST 61 1, 784,82 107,09
+0 SGST 64 1, 784.82 107.09
 Total Tax Vajue 247.46
 
-Str:01289 | Reg: 178 Tran: 0070120 TW: 17801
-20-Oct-2019 17:24:4)
+Str:01289  Reg: 178 Tran: 0070120 TW: 17801
+20-Oct-2019 17:24:4
 Invoice No:012891 780070120
 
 MIN
@@ -60,4 +60,3 @@ MIN
  
 
  
-

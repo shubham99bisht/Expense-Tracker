@@ -4,10 +4,10 @@
 Lifestyle International Pvt Ltd,
 
 Phoenix Market City, /
-Shop #:UG:18-F25,#:142 Yelachery Nain RI
+Shop :UG:18-F25,:142 Yelachery Nain RI
 Velachery, CHENNAT - 600042
 ul mT estes stores.com
-help’ cite ‘tores .com
+help cite tores .com
 Toll : 0. :1800-208-2444
 CIN ee 997P1C046775
 Billing Location: TAMILNADU
@@ -24,7 +24,7 @@ Mobile: 8508295837
 Landmark Rewards No: 6704140900
 
 Tax Invoice/Bill of Supply
-ITEM/HSN/Desc MRP Disc¥ RSP QTY Th
+ITEM/HSN/Desc MRP Disc RSP QTY Th
 1000007797442 61159500 MENS FORMAL FO
 
 349.00 0,00 349.00 1 A,B
@@ -34,7 +34,7 @@ Total Rounded 349.00
 Rounded Off Amt 0.00
 HDFC BANK-ONLINE 349.00
 Account: 2338
-Auth: 335798 ()
+Auth: 335798 
 Total Tender 349.00
 Change Due 0.00
 Total Number of Itens/Oty WV
@@ -52,11 +52,11 @@ Tax
 8.31
 
 3
-ele!
+ele
 
 fan
 S
-ce}
+ce
 BS
 
 33
@@ -99,4 +99,3 @@ buston Copy
 
  
  
-

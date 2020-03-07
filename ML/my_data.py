@@ -46,6 +46,10 @@ class MyDataset(data.Dataset):
         robust_padding(texts, labels)
 
         maxlen = max(len(t) for t in texts)
+        maxlen2 = max(len(t) for t in labels)
+        print("MAx len",maxlen, maxlen2)
+        if maxlen!=maxlen2:
+            print("OhhFuck!")
 
         text_tensor = torch.zeros(maxlen, batch_size, dtype=torch.long)
         for i, text in enumerate(texts):

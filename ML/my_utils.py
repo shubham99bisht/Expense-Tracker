@@ -41,6 +41,14 @@ def robust_padding(texts, labels):
 def random_string(n):
     if n == 0:
         return ""
+    else:
+        return " "*n
+
+
+'''
+def random_string(n):
+    if n == 0:
+        return ""
 
     x = random.random()
     if x > 0.5:
@@ -57,3 +65,4 @@ def random_string(n):
         )
 
     return pad
+'''

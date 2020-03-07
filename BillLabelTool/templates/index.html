@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+   <title>Bill Item Label Tool</title>
+   <link rel="stylesheet" type="text/css" href="/static/split.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ </head>
+
+ <body style="overflow:hidden">
+    <div class="container" style="margin-left:50px; margin-top:20px;">
+       <div class="row">
+       <div class="col-6"><h3 style="margin-left:25%;">You are currently on file: {{id}}</h3></div>
+       <div class="col-6"><a target="_blank" href="/guidelines" class="btn btn-primary" style="margin-left:50%;">Guidelines</a></div>
+       </div>
+
+       <div class="row" style="margin-left:25%; margin-bottom:20px;">
+         <button type="button" class="btn btn-warning" style="margin-left:2%" onclick="ActivateMe('vendor_btn')" id="vendor_btn">Vendor</button>
+         <button type="button" class="btn btn-primary" style="margin-left:2%" onclick="ActivateMe('address_btn')" id="address_btn">Address</button>
+         <button type="button" class="btn btn-primary" style="margin-left:2%" onclick="ActivateMe('date_btn')" id="date_btn">Date</button>
+         <button type="button" class="btn btn-primary" style="margin-left:2%" onclick="ActivateMe('billid_btn')" id="billid_btn">Invoice ID</button>
+         <button type="button" class="btn btn-primary" style="margin-left:2%" onclick="ActivateMe('total_btn')" id="total_btn">Total</button>
+         <button type="button" class="btn btn-primary" style="margin-left:2%" onclick="ActivateMe('item_btn')" id="item_btn">Item</button>
+       </div>
+     </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="my-custom-scrollbar my-custom-scrollbar-primary"><pre id="text">{{text}}</pre></div>
+        </div>
+
+        <div class="col-6"><div class="my-custom-scrollbar my-custom-scrollbar-primary">
+          <form id="myForm" action="/submit" method="post">
+            <div class="form-group">
+              <input type="hidden" value="1" id="total_item" name="total_item" >
+              <input type="hidden" value={{id}} name="id">
+            </div>
+
+            <div class="form-group">
+              <label>Vendor</label>
+              <input type="text" class="form-control" id="vendor" name="vendor">
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <input type="text" class="form-control" id="address" name="address">
+            </div>
+            <div class="form-group">
+              <label>Date</label>
+              <input type="text" class="form-control" id="date" name="date">
+            </div>
+            <div class="form-group">
+              <label>Invoice ID</label>
+              <input type="text" class="form-control" id="billid" name="billid">
+            </div>
+            <div class="form-group">
+              <label>Total</label>
+              <input type="text" class="form-control" id="total" name="total">
+            </div>
+
+            <div class="form-group">
+              <label for="inputAddress">Item 1</label>
+              <input type="text" class="form-control" id="item_1" name="item_1">
+            </div>
+          </form>
+          <button class="btn btn-primary" onclick="additem()"  style="margin:10px;">Add Item</button>
+          <button type="submit" class="btn btn-danger" form="myForm"  style="margin:10px;">Submit</button>
+        </div></div>
+      </div>
+    </div>
+ </body>
+
+ <script>
+     function getSelectionText() {
+      var text = "";
+      var activeEl = document.activeElement;
+      var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
+      if (
+        (activeElTagName == "textarea") || (activeElTagName == "input" &&
+        /^(?:text|search|password|tel|url)$/i.test(activeEl.type)) &&
+        (typeof activeEl.selectionStart == "number")
+      ) {
+          text = activeEl.value.slice(activeEl.selectionStart, activeEl.selectionEnd);
+      } else if (window.getSelection) {
+          text = window.getSelection().toString();
+      }
+      return text;
+      }
+
+      document.getElementById("text").onmouseup = document.getElementById("text").onkeyup = function() {
+        var active_btn = document.getElementsByClassName("btn btn-warning")[0].id;
+        if(active_btn=="item_btn")
+        {var active_btn = "item_" + document.getElementById('total_item').value;}
+        else{active_btn = active_btn.split("_")[0];}
+        document.getElementById(active_btn).value = getSelectionText();
+      };
+
+      // Scroll Bar
+      var myCustomScrollbar = document.querySelector('.my-custom-scrollbar');
+      var ps = new PerfectScrollbar(myCustomScrollbar);
+      var scrollbarY = myCustomScrollbar.querySelector('.ps__rail-y');
+      myCustomScrollbar.onscroll = function () {
+        scrollbarY.style.cssText = `top: ${this.scrollTop}px!important; height: 400px; right: ${-this.scrollLeft}px`;
+      }
+
+      // Add new Item input
+      function additem() {
+        var itemid = parseInt(document.getElementById('total_item').value);
+        var newid = itemid+1
+        var new_input = '<label>Item '+newid+'</label><input type="text" class="form-control" id="item_'+newid+'"name="item_'+newid+'">';
+
+        var g;
+	      g = document.createElement('div');
+        g.id = newid;
+	      document.getElementById('myForm').appendChild(g);
+        document.getElementById(g.id).innerHTML=new_input;
+
+        // document.getElementById('myForm').append(new_input);
+
+        document.getElementById('total_item').value = newid;
+      }
+
+      function ActivateMe(id){
+        document.getElementsByClassName("btn btn-warning")[0].classList.add("btn-primary");
+        document.getElementsByClassName("btn btn-warning")[0].classList.remove("btn-warning");
+        document.getElementById(id).className = "btn btn-warning";
+      }
+ </script>
+ </html>

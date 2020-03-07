@@ -1,0 +1,14 @@
+PMC CHENNAI PARKING & VALET ;
+GST No. 33AACCC7309K1Z0;
+;
+Fee INCL CGST 9% SGST 9%;
+;
+Receipt Cashier: 01 / 17.11.2019 17:07;
+Cashier 11;
+;
+Ticket Nr: 0823-0124;
+Entry: 17.11.2019 14:43;
+Exit: 17.11.2019 17:07;
+Fee Paid: INR 105.00;
+;
+= TAX INVOICE ail;

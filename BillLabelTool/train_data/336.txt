@@ -1,0 +1,32 @@
+TAX INVOICE
+Jubilant FoodWorks Limited
+*PATD*
+Phoenix Market City,Chennai,Unit No G 13
+Ground Floor,NewDoor 142,Velachery600042
+PH:- State Code:(33)
+044-30083412
+Invoice Number: 71059/19/53136
+Order :196
+12/15/2019 6:07 PM
+Server: Gracy M.
+
+Dine In
+00
+Tent :00
+1 REGULAR FLTR COFE@7 79.00
+SubTot 73.00
+CGST @ 2.5% 1.98
+SGST/UTGST @ 2.5% 1,98
+GST1B%-SGSTOX+CGSTSX @ 0.00
+Total 82.96
+Cash 100
+Change 17.00
+
+AO NOE ok Hk Ss het Sn tee et oe see et eo
+
+GSTIN: 33AABCD 18210127, PAN No. :AABCD1821C
+
+ 
+
+Feedback : customercaredunkin@julbfood.com
+

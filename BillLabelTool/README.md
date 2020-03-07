@@ -7,14 +7,16 @@ This folder contains tool for efficiently hand labelling various entity in Invoi
 Dependencies for using this tool:<br/>
     1. Flask<br/>
     2. Pytorch
-
+<br/>
+<br/>
 **DEMO**
+<br/>
 Here's a demo on how we can efficiently label large dataset quickly!
 
 ![](Media/demo_BillLabel.gif)
 
-
 **Steps:**
+<br/>
 
 1. Extract all the text and store the .txt files in /data folder. (It is assumed that all files are named sequentially starting from 1)
 2. Run

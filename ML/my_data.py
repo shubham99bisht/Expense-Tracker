@@ -1,6 +1,6 @@
 import numpy, regex, torch, json, os, random
 from os import path
-from string import ascii_uppercase, digits, punctuation
+from string import ascii_uppercase, digits, punctuation,ascii_lowercase
 from torch.utils import data
 
 from my_utils import robust_padding
@@ -16,7 +16,8 @@ class MyDataset(data.Dataset):
             self.val_dict = {}
             self.train_dict = {}
         else:
-            data_items = list(torch.load(dict_path).items())
+            #data_items = list(torch.load(dict_path).items())
+            data_items = torch.load(dict_path)
             random.shuffle(data_items)
 
             self.val_dict = dict(data_items[:val_size])

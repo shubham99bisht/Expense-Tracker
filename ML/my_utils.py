@@ -7,7 +7,7 @@ import regex
 
 
 def pred_to_dict(text, pred, prob):
-    res = {"company": ("", 0), "date": ("", 0), "address": ("", 0), "total": ("", 0)}
+    res = {"company": ("", 0),  "address": ("", 0),"date": ("", 0), "billid":("",0),"total": ("", 0),"items":("",0)}
     keys = list(res.keys())
 
     seps = [0] + (numpy.nonzero(numpy.diff(pred))[0] + 1).tolist() + [len(pred)]

@@ -1,6 +1,6 @@
 import json, os
 
-max_data = len(os.listdir("results"))-1
+max_data = len(os.listdir("results"))
 
 for i in range(1,max_data):
     with open("original_data/{}.txt".format(i),"r") as f:

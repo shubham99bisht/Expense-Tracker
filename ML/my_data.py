@@ -50,6 +50,8 @@ class MyDataset(data.Dataset):
         print("MAx len",maxlen, maxlen2)
         if maxlen!=maxlen2:
             print("OhhFuck!")
+            print(texts)
+            print(labels)
 
         text_tensor = torch.zeros(maxlen, batch_size, dtype=torch.long)
         for i, text in enumerate(texts):
@@ -92,6 +94,7 @@ def prYellow(skk): print("\033[93m{}\033[00m" .format(skk), end="")
 def prBlue(skk): print("\033[34m{}\033[00m" .format(skk), end="")
 def prPurple(skk): print("\033[95m{}\033[00m" .format(skk), end="")
 def prWhite(skk): print("\033[37m{}\033[00m" .format(skk), end="")
+def prBlack(skk): print("\033[7m{}\033[00m" .format(skk), end="")
 
 def color_print(text, text_class):
     for c, n in zip(text, text_class):
@@ -103,6 +106,10 @@ def color_print(text, text_class):
             prBlue(c)
         elif n == 4:
             prYellow(c)
+        elif n == 5:
+            prPurple(c)
+        elif n == 6:
+            prBlack(c)
         else:
             prWhite(c)
     print()

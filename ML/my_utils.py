@@ -1,6 +1,6 @@
 import random
 from difflib import SequenceMatcher
-from string import ascii_uppercase, digits, punctuation
+from string import ascii_uppercase, digits
 
 import numpy
 import regex
@@ -53,7 +53,7 @@ def random_string(n):
         pad = "".join(random.choices(ascii_uppercase + digits + " \t\n", k=n))
     else:
         pad = "".join(
-            random.choices(ascii_uppercase + digits + punctuation + " \t\n", k=n)
+            random.choices(ascii_uppercase + digits + " \t\n", k=n)
         )
 
     return pad

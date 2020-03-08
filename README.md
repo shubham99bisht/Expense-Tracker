@@ -17,7 +17,7 @@ This repository contains three directories. Inside each folder there are documen
 - **Folder 3 - Web UI**: A user interface for uploading Invoices and receiving results in a HTML form
 <br/>
 
-- **Folder 4 - Android UI**: Android interface for uploading Invoices, receiving results and to watch previous Bill uploads. [Find the Android Repo here](https://www.google.com)
+- **Folder 4 - Android UI**: Android interface for uploading Invoices, receiving results and to watch previous Bill uploads. <a href="https://github.com/shubham99bisht/Expos" target="_blank">Find the Android Repo here</a>
 
 ## Approach
 

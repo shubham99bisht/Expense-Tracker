@@ -31,6 +31,7 @@ def signup():
 def transaction():
     return render_template("transaction.html")
 
+@app.route("/")
 @app.route("/upload")
 def upload():
     return render_template("upload.html")
@@ -45,7 +46,6 @@ def demo_result():
 
 # Web Upload Functions
 #-------------------------------------------------------------------------------------------
-@app.route("/")
 @app.route("/invoice_upload", methods=["POST"])
 def invoice_upload():
     if request.method == "POST":
@@ -53,7 +53,9 @@ def invoice_upload():
         id = int(time.time())
         basedir = os.path.abspath(os.path.dirname(__file__))
         f.save(os.path.join(basedir, "static/uploads/", str(id)+".png"))
-        return render_template("crop.html", image_name=id)
+        json = main(os.path.join(basedir, "static/uploads/", str(id)+".png"))
+        return render_template("result.html",image_name=id, json = json)
+        # return render_template("crop.html", image_name=id)
 '''
 
 @app.route("/invoice_upload", methods=["POST"])

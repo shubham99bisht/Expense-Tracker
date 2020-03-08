@@ -4,10 +4,11 @@ from flask import Flask, render_template, request, send_from_directory, redirect
 import shutil, os
 app = Flask(__name__)
 from eval import main
+import pytesseract
 
 #Basic Web Pages
 #-------------------------------------------------------------------------------------------
-@app.route("/")
+
 @app.route("/index")
 def index():
     return render_template("index.html")
@@ -44,14 +45,14 @@ def demo_result():
 
 # Web Upload Functions
 #-------------------------------------------------------------------------------------------
+@app.route("/")
 @app.route("/invoice_upload", methods=["POST"])
 def invoice_upload():
     if request.method == "POST":
         f= request.files["image"]
-        uid = request.form["uid"]
         id = int(time.time())
         basedir = os.path.abspath(os.path.dirname(__file__))
-        f.save(os.path.join(basedir, "static/uploads/", str(uid)+"/"+str(id)+".png"))
+        f.save(os.path.join(basedir, "static/uploads/", str(id)+".png"))
         return render_template("crop.html", image_name=id)
 '''
 
@@ -88,7 +89,7 @@ def crop():
     x2_new = scale*x2
     img_crop = img[int(y1_new):int(y2_new), int(x1_new):int(x2_new)]
     cv2.imwrite("./static/uploads/{}.png".format(id), img_crop)
-    return "Hello World"
+    # return "Hello World"
     return redirect(url_for("result",image_name=id))
 
 @app.route("/result/<image_name>")

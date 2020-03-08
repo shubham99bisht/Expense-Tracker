@@ -3,6 +3,7 @@ from my_models import MyModel0
 from my_utils import pred_to_dict, VOCAB, color_print, preprocess
 import json
 import cv2
+import pytesseract
 
 
 def inference(text):

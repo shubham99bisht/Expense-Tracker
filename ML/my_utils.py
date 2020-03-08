@@ -44,25 +44,9 @@ def random_string(n):
     else:
         return " "*n
 
-
-'''
-def random_string(n):
-    if n == 0:
-        return ""
-
-    x = random.random()
-    if x > 0.5:
-        pad = " " * n
-    elif x > 0.3:
-        pad = "".join(random.choices(digits + " \t\n", k=n))
-    elif x > 0.2:
-        pad = "".join(random.choices(ascii_uppercase + " \t\n", k=n))
-    elif x > 0.1:
-        pad = "".join(random.choices(ascii_uppercase + digits + " \t\n", k=n))
-    else:
-        pad = "".join(
-            random.choices(ascii_uppercase + digits + " \t\n", k=n)
-        )
-
-    return pad
-'''
+def preprocess(string):
+    new_string = ""
+    for chr in string:
+        if chr in VOCAB:
+            new_string += chr
+    return new_string

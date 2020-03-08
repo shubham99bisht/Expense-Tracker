@@ -1,0 +1,37 @@
+body{
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: linear-gradient(to right bottom, #93d9fc, #66c6ff, #38b1ff, #009bff, #1482ff);
+}
+
+.card{
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.card2{
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 80%;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,1);
+  transform: scale(1.03);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.disabled {
+  pointer-events: none;
+}

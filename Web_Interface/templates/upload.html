@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<html>
+<style>
+  h4 {
+    text-align: center;
+    font-family: 'Roboto', serif;
+    height: 25px;
+  }
+  h1 {
+    text-align: center;
+    font-family: 'Roboto', serif;
+    margin: 40px;
+    font-size: 40px;
+
+  }
+    .outerBox {
+    width: 425px;
+    border: 3px solid #ccc;
+    border-radius: 40px;
+    margin: 10px 30px;
+    padding: 10px;
+    text-align: center;
+    background-color: #efefef;
+
+  }
+  .cardContent {
+    padding: 10px;
+  }
+  .cardText {
+    margin-bottom: 50px;
+
+  }
+  body {
+    background-image: url("../static/images/bg.png");
+    /* background-image: linear-gradient(to right bottom, #93d9fc, #66c6ff, #38b1ff, #009bff, #1482ff); */
+    align-content: center;
+    text-align: center;
+  }
+  .image-size{
+    width: 200px;
+  }
+  div {
+    display: inline-block;
+
+  }
+  head {
+    text-align: center;
+  }
+  #btn {
+    background-color: #94cae3;
+    /* padding: 10px 10px; */
+    height: 40px;
+    width: 90px;
+    padding: 10px;
+    margin: 20px auto;
+    border: 0;
+    border-radius: 3px;
+  }
+  .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+<head>
+  <title>Expense Tracker- Upload Invoice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./static/images/favicon.png">
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAkGRtjIhDYjybhdFUHmNM2FnCFA9z9-Gg",
+      authDomain: "expense-tracker-7e30c.firebaseapp.com",
+      databaseURL: "https://expense-tracker-7e30c.firebaseio.com",
+      projectId: "expense-tracker-7e30c",
+      storageBucket: "",
+      messagingSenderId: "886344330580",
+      appId: "1:886344330580:web:9c7cef3a3b72ef01d8ecc1"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="./static/scripts/firebase.js"></script>
+  <!-- FIREBASE ends -->
+</head>
+<body onload="getUser()">
+<div>
+  <h1>Upload Invoice/Bill Image</h1>
+  <div>
+
+<!-- Invoice Upload form  -->
+<div class="outerBox">
+  <div>
+  <div class="cardContent">
+    <div class="cardText">
+      <h4>Upload images or screenshot of bill payments</h4>
+          <img class = "image-size" src="../static/images/upload.png">
+          <br><br><br>
+      <form action = "/invoice_upload" method = "POST" enctype = "multipart/form-data">
+         <input type = "file" name = "image" accept="image/*" align="center" required>
+         <input type = "text" id="uid" name = "uid" value="None" required style="display:none;">
+         <input id = "btn" type = "submit" value="Upload" style = "font-size:16px; text-decoration: none; cursor: pointer;">
+         <br><br>
+      </form>
+      <form  action = "/demo_crop">
+        <button class="button">Demo</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+<script>
+function getUser(){
+  var user = firebase.auth().currentUser;
+  document.getElementById("uid").value = user.uid;
+}
+</script>
+</html>

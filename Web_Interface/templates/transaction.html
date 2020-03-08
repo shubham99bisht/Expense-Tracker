@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#627ab7">
+  <title>Expense Tracker</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./static/images/favicon.png">
+  <!-- Typography CSS -->
+   <link rel="stylesheet" href="./static/css/owl.carousel.min.css">
+   <link rel="stylesheet" href="./static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="./static/css/typography.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link rel="stylesheet" href="./static/css/responsive.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <!-- Bootstrap -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./static/css/transactions.css">
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+  <!-- <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script> -->
+  <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.css" /> -->
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyAkGRtjIhDYjybhdFUHmNM2FnCFA9z9-Gg",
+			authDomain: "expense-tracker-7e30c.firebaseapp.com",
+			databaseURL: "https://expense-tracker-7e30c.firebaseio.com",
+			projectId: "expense-tracker-7e30c",
+			storageBucket: "",
+			messagingSenderId: "886344330580",
+			appId: "1:886344330580:web:9c7cef3a3b72ef01d8ecc1"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script>
+  <script src="./static/scripts/firebase.js"></script>
+  <!-- FIREBASE ends -->
+  <style>
+  .mystyle{max-width: 80%; margin-top: 2px;padding:10px; height:55px;}
+  </style>
+
+  <script src="./static/scripts/transactions.js"></script>
+
+</head>
+<body>
+
+  <!-- loading -->
+  <!-- <div id="loading">
+     <div id="loading-center">
+        <img src="./static/images/dots.gif" alt="loader">
+     </div>
+  </div> -->
+  <!-- loading End -->
+  <!--================================= Header -->
+  <header id="header">
+     <div class="container">
+        <div class="row align-items-center">
+           <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg navbar-light" style="padding-right: 0;">
+                 <a class="navbar-brand" href="./index">
+                 <img class="logo" src="./static/images/logo.png" alt="">
+                 <img class="logo-stiky" src="./static/images/favicon.png" alt="" style="width: 44px;">
+                 </a>
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                       <li class="nav-item">
+                          <a class="nav-link" href="upload" target="_blank">Upload New</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="chart">Summary</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="#">Export Data</a>
+                       </li>
+                       <li class="nav-item">
+                          <button type="button" class="btn btn-warning" onclick="logout_function()">Log Out</button>
+                       </li>
+                    </ul>
+                 </div>
+              </nav>
+           </div>
+           <!-- <div class="col-lg-3 text-right">
+              <ul class="login">
+
+              </ul>
+           </div> -->
+        </div>
+     </div>
+  </header>
+  <!--=================================
+     Header -->
+
+
+
+<br><br>
+<br><br>
+<br><br>
+<h2 style="text-align:center;">Transaction Details</h2>
+
+<div class="card" style="max-width: 80%; margin-bottom: 20px;padding:10px; height:55px;">
+  <div class="row" style="text-align:center;">
+    <div class="col-md-2"><div style="font-size:20px;">Date</div></div>
+    <div class="col-md-2"><div style="font-size:20px;">Vendor</div></div>
+    <div class="col-md-2"><div style="font-size:20px;">Items</div></div>
+    <div class="col-md-2"><div style="font-size:20px;">Amount</div></div>
+    <div class="col-md-1"><div style="font-size:20px;">Image</div></div>
+    <div class="col-md-1"><div style="font-size:20px;">Status</div></div>
+    <div class="col-md-1"><div style="font-size:20px;">Edit</div></div>
+    <div class="col-md-1"><div style="font-size:20px;">Bin</div></div>
+  </div>
+</div>
+
+<div class="card" style="max-width: 80%; padding:10px; height:55px;">
+  <div class="row" style="text-align:center;">
+    <div class="col-md-2">2/03/2020</div>
+    <div class="col-md-2"><div>Sample Vendor</div></div>
+    <div class="col-md-2"><div>Sample Item 1</div></div>
+    <div class="col-md-2"><div>1729</div></div>
+    <div class="col-md-1"><div style="font-size:20px;"><a target="_blank" href="https://www.google.com"><i class="fa fa-image"></i></a></div></div>
+    <div class="col-md-1"><div style="font-size:20px;"><i class="fa fa-check" aria-hidden="true" style="color:darkgreen"></i></div></div>
+    <div class="col-md-1"><div style="font-size:20px;"><a target="_blank" href="https://www.google.com"><i class="fa fa-edit" style="color:blue;"></i></a></div></div>
+    <div class="col-md-1"><div style="font-size:20px;"><i class="fa fa-trash" onclick="DeleteByID('0002')"></i></div></div>
+  </div>
+</div>
+
+<!-- <div class="card mb-3" style="max-width: 80%; margin-top: 20px;">
+  <div class="row no-gutters">
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+</body>
+</html>

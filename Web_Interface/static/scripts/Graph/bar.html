@@ -1,0 +1,91 @@
+</<!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+      <meta charset="utf-8">
+
+      <!-- <script src="./scripts/firebase.js"></script> -->
+      <!-- FIREBASE ends -->
+      <title>Expense Tracker - Graph</title>
+    </head>
+    <body>
+      <canvas id="myChart" width="30" height="30"></canvas>
+    </body>
+  </html>
+
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAkGRtjIhDYjybhdFUHmNM2FnCFA9z9-Gg",
+    authDomain: "expense-tracker-7e30c.firebaseapp.com",
+    databaseURL: "https://expense-tracker-7e30c.firebaseio.com",
+    projectId: "expense-tracker-7e30c",
+    storageBucket: "",
+    messagingSenderId: "886344330580",
+    appId: "1:886344330580:web:9c7cef3a3b72ef01d8ecc1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  function summary() {
+
+    // var jsn = "";
+    // var user = "mukund";
+  	// var ref = firebase.database().ref('Bills/'+user);
+  	// ref.on('value', function(snapshot) {
+  	//   // console.log(snapshot.val());
+  	//   jsn = snapshot.val();
+  	// });
+
+
+  var food =10;
+  var clothes = 20;
+  return [food, clothes];
+
+}
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var values = summary();
+var food_data =values[0];
+var clothes_data =values[1];
+
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['FOOD', 'Stationery', 'CLOTHES'],
+        datasets: [{
+            label: '# of Votes',
+            data: [food_data, clothes_data, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>

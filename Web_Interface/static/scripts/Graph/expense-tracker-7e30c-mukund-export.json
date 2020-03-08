@@ -1,0 +1,51 @@
+{
+  "1001" : {
+    "Amount" : 450,
+    "Category" : "Stationery",
+    "Date" : "01/09/2019",
+    "Place" : "kurla",
+    "Vendor" : "Shiv Sagar Restaurants"
+  },
+  "1002" : {
+    "Amount" : 2000,
+    "Category" : "Food",
+    "Date" : "17/06/2019",
+    "Place" : "ghatkopar",
+    "Vendor" : "Dmart"
+  },
+  "1002" : {
+    "Amount" : 1000,
+    "Category" : "Food",
+    "Date" : "17/06/2019",
+    "Place" : "ghatkopar",
+    "Vendor" : "Dmart"
+  },
+  "1002" : {
+    "Amount" : 2000,
+    "Category" : "Clothes",
+    "Date" : "17/06/2019",
+    "Place" : "ghatkopar",
+    "Vendor" : "Dmart"
+  },
+  "1002" : {
+    "Amount" : 2000,
+    "Category" : "Stationery",
+    "Date" : "17/06/2019",
+    "Place" : "ghatkopar",
+    "Vendor" : "Dmart"
+  },
+  "1002" : {
+    "Amount" : 1500,
+    "Category" : "Clothes",
+    "Date" : "17/06/2019",
+    "Place" : "ghatkopar",
+    "Vendor" : "Dmart"
+  },
+  "1002" : {
+    "Amount" : 250,
+    "Category" : "Stationery",
+    "Date" : "17/06/2019",
+    "Place" : "ghatkopar",
+    "Vendor" : "Dmart"
+  }
+}

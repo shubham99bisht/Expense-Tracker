@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en-US">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="theme-color" content="#627ab7">
+      <meta name="msapplication-navbutton-color" content="#627ab7">
+      <!-- iOS Safari -->
+      <meta name="apple-mobile-web-app-status-bar-style" content="#627ab7">
+      <title>Expense Tracker</title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="./static/images/favicon.png">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="./static/css/bootstrap.min.css">
+      <link rel="stylesheet" href="./static/css/magnific-popup.css">
+      <link rel="stylesheet" href="./static/css/circle.css">
+
+      <!-- Typography CSS -->
+       <link rel="stylesheet" href="./static/css/owl.carousel.min.css">
+       <link rel="stylesheet" href="./static/css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="./static/css/typography.css">
+      <link rel="stylesheet" href="./static/css/style.css">
+      <link rel="stylesheet" href="./static/css/responsive.css">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+      <!-- Bootstrap -->
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <!-- loading -->
+      <div id="loading">
+         <div id="loading-center">
+            <img src="./static/images/dots.gif" alt="loader">
+         </div>
+      </div>
+      <!-- loading End -->
+      <!--================================= Header -->
+      <header id="header">
+         <div class="container">
+            <div class="row align-items-center">
+               <div class="col-lg-12">
+                  <nav class="navbar navbar-expand-lg navbar-light" style="padding-right: 0;">
+                     <a class="navbar-brand" href="./index">
+                     <img class="logo" src="./static/images/logo.png" alt="">
+                     <img class="logo-stiky" src="./static/images/favicon.png" alt="" style="width: 44px;">
+                     </a>
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto">
+                           <li class="nav-item">
+                              <a class="nav-link" href="index#papers">Papers</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="index#features">Features</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="index#team">Coming Soon</a>
+                           </li>
+                           <li class="nav-item">
+                            <form  action = "/transaction" style="padding: 0px 0px; margin-top:-12px;">
+                              <!-- <button type="button" class="btn btn-warning" onclick=" window.open('login', '_blank'); return false;">Go to Console</button> -->
+                              <button type="submit" class="btn btn-warning" style='margin-top:10px;'>Go to Console</button>
+                            </form>
+                           </li>
+                        </ul>
+                     </div>
+                  </nav>
+               </div>
+               <!-- <div class="col-lg-3 text-right">
+                  <ul class="login">
+
+                  </ul>
+               </div> -->
+            </div>
+         </div>
+      </header>
+      <!--=================================
+         Header -->
+      <!--=================================
+         Banner -->
+      <div id="banner" class="banner" style="background: linear-gradient(to right bottom, #4a4592 0%, #85d8ffe8 100%);">
+         <div class="banner-text">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-5 col-md-12 col-sm-12">
+                     <h1>Expense Tracker</h1>
+                     <h3 class="mt-4">AI-Driven Bill Management App</h3>
+                  </div>
+                  <div class="col-lg-7 col-md-12 col-sm-12 text-right">
+                    <img class="img-fluid banner-img" src="./static/images/banner.svg" alt="">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <img class="img-fluid banner-after" src="./static/images/banner-after.png" alt="">
+      </div>
+      <!--=================================
+         Banner -->
+      <!--=================================
+         MAIN CONTENT -->
+      <div class="main-content">
+         <!--=================================
+            Features -->
+         <!--=================================
+            Blog -->
+         <section id="papers" class="iq-blog mt-2 iq-features" style="padding-bottom: 0px;">
+            <div class="bg"><img src="./static/images/work-bg.png" alt="" style="top:50px"></div>
+            <div class="container" style="padding-bottom:  80px;">
+               <div class="row justify-content-md-center">
+                  <div class="col-sm-8 text-center">
+                     <div class="title-box">
+                        <h2 class="title text-dark"><span>Interfaces</span></h2>
+                        <p class="subtitles mt-2">Making Data available anywhere, anytime on any device!</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="owl-carousel mt-5" style="border-radius:0px;" data-autoplay="true" data-loop="true" data-nav="true" data-dots="false" data-items="2" data-items-laptop="2" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1">
+                  <div class="item clients-box2" style="cursor:pointer;margin: 5px;" onclick="openUrl('https://arxiv.org/abs/1605.01189');">
+                     <div class="blog-box">
+                        <div class="row no-gutters row-eq-height">
+                           <!-- <div class="col-sm-6 iq-shadow" style="background: linear-gradient(to right bottom, #5761a7, #75a2d5);">
+                              <div class="content" style="height: 100%; position: relative; padding-bottom: 96px;">
+                                 <h5 class="mb-2" style="color: white; font-weight: 600;font-size: 16px;">A Generic Method for Automatic Ground Truth Generation of Camera-captured Documents</h5>
+                                 <ul class="mt-4" style="line-height: 1.9em;">
+                                    <li style="color: white;">Authors: Sheraz Ahmed, Muhammad Imran Malik</li>
+                                 </ul>
+                                 <ul class="iq-tag mt-4" style="position: absolute; bottom: 20px;margin-right: 30px;">
+                                    <li><a style="background: #e9e9e930; color: white;font-size: 13px;">Camera-captured</a></li>
+                                    <li><a style="background: #e9e9e930; color: white;font-size: 13px;">Image Retrieval</a></li>
+                                 </ul>
+                              </div>
+                           </div> -->
+                           <div class="col-sm-12">
+                              <a href="https://arxiv.org/abs/1605.01189" target="_blank">
+                              <img class="img-fluid" src="./static/images/img1.png" alt="">
+                                 </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="item clients-box2" style="cursor:pointer;margin: 5px;" onclick="openUrl('https://www.aclweb.org/anthology/U18-1006');">
+                     <div class="blog-box">
+                        <div class="row no-gutters row-eq-height">
+                           <div class="col-sm-6 iq-shadow" style="background: linear-gradient(to right bottom, #5761a7, #75a2d5);">
+                              <div class="content" style="height: 100%; position: relative; padding-bottom: 70px;">
+                                 <!--<a href="https://arxiv.org/abs/1901.03546" target="_blank">-->
+                                 <h5 class="mb-2" style="color: white; font-weight: 600;font-size: 16px;">Extracting structured data from invoices</h5>
+                                 <ul class="mt-4" style="line-height: 1.9em;">
+                                    <li style="color: white;">Author: Xavier Holt, Andrew Chisholm</li>
+                                    <!--<li style="color: white;">Jan 11, 2019</li>-->
+                                 </ul>
+                                    <!--</a>-->
+                                 <!--<p class="mt-4" style="color: white;">State-of-the-art performance for Visual Search feature.</p>-->
+                                 <ul class="iq-tag mt-4" style="position: absolute; bottom: 20px;margin-right: 30px;">
+                                    <li><a style="background: #e9e9e930; color: white;font-size: 13px;">Visual Search</a></li>
+                                    <li><a style="background: #e9e9e930; color: white;font-size: 13px;">Engineering</a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                           <div class="col-sm-6">
+                              <a href="https://www.aclweb.org/anthology/U18-1006" target="_blank">
+                              <img class="img-fluid" src="./static/images/Xavier.png" alt="">
+                                 </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="item clients-box2" style="cursor:pointer;margin: 5px;" onclick="openUrl('https://nlp.fi.muni.cz/raslan/2017/paper06-Ha.pdf');">
+                     <div class="blog-box">
+                        <div class="row no-gutters row-eq-height">
+                           <div class="col-sm-6 iq-shadow" style="background: linear-gradient(to right bottom, #5761a7, #75a2d5);">
+                              <div class="content" style="height: 100%; position: relative; padding-bottom: 70px;">
+                                 <!--<a href="https://arxiv.org/abs/1901.03546" target="_blank">-->
+                                 <h5 class="mb-2" style="color: white; font-weight: 600;font-size: 16px;">Recognition of Invoices from Scanned Document</h5>
+                                 <ul class="mt-4" style="line-height: 1.9em;">
+                                    <li style="color: white;">Author: Hien Thi Ha</li>
+                                    <!--<li style="color: white;">Jan 11, 2019</li>-->
+                                 </ul>
+                                    <!--</a>-->
+                                 <!--<p class="mt-4" style="color: white;">State-of-the-art performance for Visual Search feature.</p>-->
+                                 <ul class="iq-tag mt-4" style="position: absolute; bottom: 20px;margin-right: 30px;">
+                                    <li><a style="background: #e9e9e930; color: white;font-size: 13px;">Classification</a></li>
+                                    <li><a style="background: #e9e9e930; color: white;font-size: 13px;">OCR</a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                           <div class="col-sm-6">
+                              <a href="https://nlp.fi.muni.cz/raslan/2017/paper06-Ha.pdf" target="_blank">
+                              <img class="img-fluid" src="./static/images/hein.png" alt="">
+                                 </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section id="features" class="iq-features">
+            <div class="bg"><img src="http://research.fynd.com/images/works/work-bg.png" alt="img"></div>
+            <div class="container">
+               <div class="row justify-content-md-center">
+                  <div class="col-sm-8 text-center">
+                     <div class="title-box">
+                        <h2 class="title text-dark"><span>Features</span></h2>
+                        <p class="subtitles mt-2">Providing amazing features that ease the process</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="row align-items-center">
+                  <div class="col-lg-6 col-md-12 text-center">
+                     <img id="features-banner" class="img-fluid top-img1" src="./static/images/features/1.png" style="width: 100%;">
+                  </div>
+                  <div class="col-lg-6 col-md-12">
+                     <div class="holderCircle">
+                        <div class="round"></div>
+                        <div class="dotCircle">
+                           <span class="itemDot active itemDot1" data-tab="1">
+                           <!--<i class="ion-ios-timer-outline"></i>-->
+                           <img id="features_img1" class="features_img" src="./static/images/features/2d&#32;3d&#32;white.svg"/>
+                              <span class="forActive"></span>
+                           </span>
+                           <span class="itemDot itemDot2" data-tab="2">
+                           <!--<i class="ion-ios-chatboxes-outline"></i>-->
+                              <img id="features_img2" class="features_img" src="./static/images/features/resolution.svg"/>
+                           <span class="forActive"></span>
+                           </span>
+                           <span class="itemDot itemDot3" data-tab="3">
+                           <!--<i class="ion-ios-person-outline"></i>-->
+                              <img id="features_img3" class="features_img" src="./static/images/features/mix&#32;n&#32;match.svg"/>
+                           <span class="forActive"></span>
+                           </span>
+                           <span class="itemDot itemDot4" data-tab="4">
+                           <!--<i class="ion-ios-pricetags-outline"></i>-->
+                              <img id="features_img4" class="features_img" src="./static/images/features/ar&#32;lips.svg"/>
+                           <span class="forActive"></span>
+                           </span>
+                           <span class="itemDot itemDot5" data-tab="5">
+                           <!--<i class="ion-ios-upload-outline"></i>-->
+                           <img id="features_img5" class="features_img" src="./static/images/features/model&#32;faces.svg"/>
+                           <span class="forActive"></span>
+                           </span>
+                           <span class="itemDot itemDot6" data-tab="6">
+                           <!--<i class="ion-ios-briefcase-outline"></i>-->
+                           <img id="features_img6" class="features_img" src="./static/images/features/trak.svg"/>
+                           <span class="forActive"></span>
+                           </span>
+                        </div>
+                        <div class="contentCircle">
+                           <div class="CirItem title-box active CirItem1">
+                              <h2 class="title"><span>Auto Scan</span></h2>
+                              <p>Converting all products in catalogue to 3D models using images present in all views for use in AR and VR.</p>
+                              <!--<i class="ion-ios-timer-outline"></i>-->
+                           </div>
+                           <div class="CirItem title-box CirItem2">
+                              <h2 class="title"><span>Cloud Support</span></h2>
+                              <p>Increasing the resolution of low quality images using GAN to fill the missing intermediate pixels.</p>
+                              <!--<i class="ion-ios-chatboxes-outline"></i>-->
+                           </div>
+                           <div class="CirItem title-box CirItem3">
+                              <h2 class="title"><span>Categorise</span></h2>
+                              <p>Learning trends from various fashion platforms and magazines to understand what goes well with what.</p>
+                              <!--<i class="ion-ios-person-outline"></i>-->
+                           </div>
+                           <div class="CirItem title-box CirItem4">
+                              <h2 class="title"><span>Export Data</span></h2>
+                              <p>Allowing users to quickly try out all our lipstick shades in Augmented Reality environment.</p>
+                              <!--<i class="ion-ios-pricetags-outline"></i>-->
+                           </div>
+                           <div class="CirItem title-box CirItem5">
+                              <h2 class="title"><span>Data Availability</span></h2>
+                              <p>Creating virtual models to promote all our in-house brands using recent advancements in GANs.</p>
+                              <!--<i class="ion-ios-upload-outline"></i>-->
+                           </div>
+                           <div class="CirItem title-box CirItem6">
+                              <h2 class="title"><span>Summary Visualisation</span></h2>
+                              <p>Video survelliance analytics platform provide brands data like footfall counts, demography of users etc.</p>
+                              <!--<i class="ion-ios-briefcase-outline"></i>-->
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- Tools -->
+         <section id="tools">
+            <div class="container">
+               <div class="row justify-content-md-center">
+                  <div class="col-lg-8 col-md-12 text-center">
+                     <div class="title-box">
+                        <h2 class="title text-dark"><span>Tools</span></h2>
+                        <p class="subtitles mt-2">Sharing Power to Non Developers</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="clients-box row align-items-center mb-4" style="cursor:pointer;" onclick="openUrl('https://wb.fynd.com/');">
+                  <div class="col-lg-6 col-md-12 mt-5">
+                     <div class="title-box">
+                        <h2 class="title-light text-dark">Data Platform: <a href="https://wb.fynd.com/" target="_blank"><span>Workbench</span></a></h2>
+                     </div>
+                     <p class="mt-4">Developer-less Data and ML product suite. Build, automate and manage your business workflow at any scale.</p>
+                     <p>Various features include: InstAPI: Create API Instantly without Coding, Rest API Scheduler, Data Explorer and Business Rules Engine.</p>
+                  </div>
+                  <div class="col-lg-6 col-md-12 mt-5">
+                     <a href="https://wb.fynd.com/" target="_blank"><img class="img-fluid top-img1 w-100" src="images/about/wb2.gif" alt=""></a>
+                  </div>
+               </div>
+               <div class="clients-box row align-items-center" style="cursor:pointer;" onclick="openUrl('http://witi.gofynd.com/');">
+                  <div class="col-lg-6 col-md-12 order-lg-2 order-2 mt-5 pt-5">
+                     <div class="title-box">
+                        <h2 class="title-light text-dark">Live ML Models: <a href="http://witi.gofynd.com/" target="_blank"><span>WITI</span></a></h2>
+                     </div>
+                     <p class="mt-4">Witi is a service that makes it easy to automatically tags all your e-commerce specific catalogue images, so you can quickly organize, manage, and search through your content.</p>
+                     <p class="mt-4">With Witi, you can detect ecommerce specific product attributes like sleeve length, pattern, neck type, product category and more.</p>
+                  </div>
+                  <div class="col-lg-6 col-md-12 order-lg-1 order-2 mt-5 pt-5" style="padding-top: 2rem!important;">
+                     <a href="http://witi.gofynd.com/" target="_blank"><img class="img-fluid top-img1 w-100" src="images/about/witi.png" alt=""></a>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section id="team" class="iq-about" style="padding-top: 0px;">
+            <div class="bg"><img src="./static/images/work-bg.png" alt="" style="top:300px"></div>
+            <div class="container">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="about-content mt-5" style="margin-top: 0px;">
+                        <!--<div id="team" class="text-center">-->
+                <div class="container">
+                   <div class="row justify-content-md-center mt-5">
+                      <div class="col-lg-8 col-md-12 text-center">
+                         <div class="title-box">
+                            <h2 class="title text-dark"><span>Coming Soon</span></h2>
+                         </div>
+                      </div>
+                   </div>
+                    <div class="row justify-content-md-center">
+                        <div class="col-sm-12 col-md-6 col-lg-3 mt-4">
+                            <div class="iq-team grey-bg" onclick="">
+                                <div class="iq-team-img">
+                                    <img src="./static/images/reminder.png" class="img-fluid center-block">
+                                </div>
+                                <div class="iq-team-info text-center" style="padding: 7px 20px;">
+                                    <h5 style="margin-bottom: 0px; font-size: 24px;">Reminders</h5>
+                                    <span class="team-post iq-tw-5" style="color: #666666; font-weight: 400;"> Notifying Monthy bills</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 mt-4">
+                            <div class="iq-team grey-bg" onclick="">
+                                <div class="iq-team-img">
+                                    <img src="./static/images/chatbot.png" class="img-fluid center-block">
+                                </div>
+                                <div class="iq-team-info text-center" style="padding: 7px 20px;">
+                                    <h5 style="margin-bottom: 0px; font-size: 24px;">Chatbot Facility</h5>
+                                    <span class="team-post iq-tw-5" style="color: #666666; font-weight: 400;">NL to SQL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 mt-4">
+                            <div class="iq-team grey-bg" onclick="">
+                                <div class="iq-team-img">
+                                    <img src="./static/images/family.png" class="img-fluid center-block">
+                                </div>
+                                <div class="iq-team-info text-center" style="padding: 7px 20px;">
+                                    <h5 style="margin-bottom: 0px; font-size: 24px;">Family</h5>
+                                    <span class="team-post iq-tw-5" style="color: #666666; font-weight: 400;">Tracking & Saving</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 mt-4">
+                            <div class="iq-team grey-bg" onclick="">
+                                <div class="iq-team-img">
+                                    <img src="./static/images/invest.png" class="img-fluid center-block">
+                                </div>
+                                <div class="iq-team-info text-center" style="padding: 7px 20px;">
+                                    <h5 style="margin-bottom: 0px; font-size: 24px;">Advisor</h5>
+                                    <span class="team-post iq-tw-5" style="color: #666666; font-weight: 400;">Intelligent Investment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></div></div></div></div>
+            </section>
+
+      </div>
+      <!--=================================
+         MAIN CONTENT -->
+      <!--=================================
+         Footer -->
+      <footer>
+         <img class="img-fluid footer-before" src="./static/images/footer-before.png" alt="">
+         <div class="container">
+            <div class="row align-items-center">
+               <div class="col-lg-3 col-md-4 col-sm-12 re-center">
+                  <a href="#" target="_blank"><img class="img-fluid logo" alt="#" src="./static/images/logo_black.png"></a>
+               </div>
+               <div class="col-lg-6 col-md-4 col-sm-12 text-center text-uppercase">
+                  <ul class="copyright">
+                      <li class="d-inline mr-4" style="font-size: 14px;"><a href="#" target="_blank">Engineering</a></li>
+                      <li class="d-inline mr-4" style="font-size: 14px;"><a href="#" target="_blank">Careers</a></li>
+                     <li class="d-inline mr-4" style="font-size: 14px;"><a href="#" target="_blank">Blog</a></li>
+                     <li class="d-inline mr-4" style="font-size: 14px;"><a href="#">Contact</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!--=================================
+         Footer -->
+
+      <!--=================================
+         MAIN CONTENT -->
+      <!--=================================
+         Chatbot -->
+      <!--<div id="body">-->
+         <!--<div id="chat-circle" class="btn btn-raised">-->
+            <!--<i class="ion-chatbubble-working"></i>-->
+         <!--</div>-->
+         <!--<div class="chat-box">-->
+            <!--<div class="chat-box-header">-->
+               <!--<h5 class="title">ChatBot</h5>-->
+               <!--<span class="chat-box-toggle"><i class="ion-close-round"></i></span>-->
+            <!--</div>-->
+            <!--<div class="chat-box-body">-->
+               <!--<div class="chat-box-overlay">   -->
+               <!--</div>-->
+               <!--<div class="chat-logs">-->
+               <!--</div>-->
+               <!--&lt;!&ndash;chat-log &ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="chat-input">-->
+               <!--<form>-->
+                  <!--<input type="text" id="chat-input" placeholder="Send a message..."/>-->
+                  <!--<button type="submit" class="chat-submit" id="chat-submit"><i class="ion-ios-paperplane"></i></button>-->
+               <!--</form>-->
+            <!--</div>-->
+         <!--</div>-->
+      <!--</div>-->
+      <!--=================================
+         Chatbot -->
+      <!--=================================
+         Cookies -->
+      <!--<div id="cookie_div" class="align-items-center"> We use cookies to give you tailored experiences on our website.-->
+         <!--<a class="button grey text-right ml-3" role="button" id="cookie">Accept </a>-->
+      <!--</div>-->
+      <!--=================================
+         Cookies -->
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="./static/scripts/js/jquery-3.3.1.min.js"></script>
+      <script src="./static/scripts/js/popper.min.js"></script>
+      <script src="./static/scripts/js/bootstrap.min.js"></script>
+      <!-- Owl Carousel -->
+      <!--<script src="js/owl.carousel.min.js"></script>-->
+      <script src="./static/scripts/js/owl.carousel2.3.4.js"></script>
+      <script src="./static/scripts/js/owl.carousel2.3.4.min.js"></script>
+      <!-- Wow -->
+      <script src="./static/scripts/js/wow.min.js"></script>
+      <!-- App Min -->
+      <script src="./static/scripts/js/app.min.js"></script>
+      <!-- Circle -->
+      <script src="./static/scripts/js/circle.js"></script>
+      <!-- Chatbot -->
+      <!--<script src="js/chatbot.js"></script>-->
+      <!-- main -->
+      <script src="./static/scripts/js/main.js"></script>
+      <!-- Custom -->
+      <script src="./static/scripts/js/custom.js"></script>
+   </body>
+</html>

@@ -1,0 +1,126 @@
+/*
+Vizion - Al/ML - Chatbot Responsive HTML5 Template
+Author: iqonicthemes.in
+Version: 1.0
+Design and Developed by: iqonicthemes.in
+*/
+/*================================================
+[  Table of contents  ]
+================================================
+ 1 Google Font
+ 2 Import Css
+ 3 General
+ 4 Input and textarea
+ 5 Text color
+ 6 Title
+ 7 Button
+ 8 Background  color
+ 9 Background overlay color
+10 Back to Top
+11 Loader
+12 Form
+======================================
+[ End table content ]
+======================================*/
+/*---------------------------------------------------------------------
+1 Google Font
+-----------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+/*---------------------------------------------------------------------
+2 import Css
+-----------------------------------------------------------------------*/
+@import url("fontawesome-all.min.css");
+/*@import url("owl.carousel.css");*/
+@import url("ionicons.min.css");
+/*---------------------------------------------------------------------
+3 General
+-----------------------------------------------------------------------*/
+*::-moz-selection { background: #a733bb; color: #ffffff; text-shadow: none; }
+::-moz-selection { background: #a733bb; color: #ffffff; text-shadow: none; }
+::selection { background: #a733bb; color: #ffffff; text-shadow: none; }
+body { font-family: 'Montserrat', sans-serif; font-weight: normal; font-style: normal; font-size: 16px; line-height: 2em; color: #444444; }
+a, .btn, .button { -webkit-transition: all 0.3s ease-out 0s; -moz-transition: all 0.3s ease-out 0s; -ms-transition: all 0.3s ease-out 0s; -o-transition: all 0.3s ease-out 0s; transition: all 0.3s ease-out 0s; }
+a:focus { text-decoration: none !important; }
+a:focus, a:hover { color: #a733bb; text-decoration: none !important; }
+a, button { outline: medium none !important; }
+.uppercase { text-transform: uppercase; }
+h1, h2, h3, h4, h5, h6 { margin-top: 0px; color: #222222;  font-family: 'Montserrat', sans-serif;}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: inherit; }
+label { font-weight: normal; }
+h1 { font-size: 40px; font-style: normal; line-height: 60px; }
+h2 { font-size: 36px; font-style: normal; line-height: 50px; }
+h3 { font-size: 24px; font-style: normal; line-height: 36px; }
+ul { margin: 0px; padding: 0px; }
+section { padding: 80px 0; }
+
+/*---------------------------------------------------------------------
+4 Input and textarea
+-----------------------------------------------------------------------*/
+.form-control, textarea { border: 2px solid #dddddd; outline: none; box-shadow: inherit !important; }
+textarea { padding: 10px 0 0 10px; border-radius: .25rem; }
+.form-control:hover, .form-control:focus, textarea:focus, textarea:hover { border: 2px solid #3e28b9; }
+/*---------------------------------------------------------------------
+5 Text color
+-----------------------------------------------------------------------*/
+.text-white { color: #ffffff; }
+.text-dark { color: #222222; }
+/*---------------------------------------------------------------------
+6 Title
+-----------------------------------------------------------------------*/
+.title-box .title { font-weight: 600; letter-spacing: 2px; position: relative; z-index: -1; }
+.title-box span { text-shadow: 0 0px 0px rgba(0, 0, 0, .15); font-weight: 700; color: #3e28b9; }
+.title-box p {font-size: 17px; line-height: 2em; }
+/*---------------------------------------------------------------------
+7 Button
+-----------------------------------------------------------------------*/
+.button { background: #7d4ac7; /* Old browsers */ background: -moz-linear-gradient(left, #7d4ac7 0%, #a733bb 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(left, #7d4ac7 0%, #a733bb 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to right, #7d4ac7 0%, #a733bb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d4ac7', endColorstr='#a733bb', GradientType=1); /* IE6-9 */ color: #ffffff; padding: 15px 30px; display: inline-block; text-decoration: none !important; font-size: 16px; line-height: 16px; font-weight: 600; border-radius: 6px; letter-spacing: 1px; }
+.button:hover, .button:focus { color: #ffffff; background: #a733bb; /* Old browsers */ background: -moz-linear-gradient(left, #a733bb 0%, #7d4ac7 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(left, #a733bb 0%, #7d4ac7 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to right, #a733bb 0%, #7d4ac7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a733bb', endColorstr='#7d4ac7', GradientType=1); /* IE6-9 */ }
+.read-more { color: #3d27b6; font-weight: 800; letter-spacing: 1px; position: relative; }
+.read-more:hover { color: #4a47ee; }
+.read-more:before { position: absolute; content: "\f3d1"; letter-spacing: 0; right: -14px; font-size: 20px; font-family: "Ionicons"; bottom: -7px; }
+/*---------------------------------------------------------------------
+8 Background  color
+-----------------------------------------------------------------------*/
+.white-bg { background: #ffffff; }
+.gray-bg { background: #FAFAFA; }
+.main-bg { background: #a733bb; }
+.black-bg { background: #828286; }
+/*************************
+9 BG - Images
+*************************/
+.parallax { background-size: cover !important; -webkit-background-size: cover !important; -moz-background-size: cover !important; -ms-background-size: cover !important; position: relative; z-index: 0; background-origin: initial; background-position: center center !important; background-repeat: no-repeat; }
+/*---------------------------------------------------------------------
+Background overlay color
+-----------------------------------------------------------------------*/
+/* Background Gradient Black */
+.bg-over-black-10:before { background: rgba(0, 0, 0, 0.1); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+.bg-over-black-20:before { background: rgba(0, 0, 0, 0.2); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+.bg-over-black-30:before { background: rgba(0, 0, 0, 0.3); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+.bg-over-black-40:before { background: rgba(0, 0, 0, 0.4); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+.bg-over-black-50:before { background: rgba(0, 0, 0, 0.5); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+.bg-over-black-60:before { background: rgba(0, 0, 0, 0.6); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+.bg-over-black-70:before { background: rgba(0, 0, 0, 0.7); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+.bg-over-black-80:before { background: rgba(0, 0, 0, 0.8); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+.bg-over-black-90:before { background: rgba(0, 0, 0, 0.9); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+/*---------------------------------------------------------------------
+10 Back to Top
+-----------------------------------------------------------------------*/
+#back-to-top .top { z-index: 999; position: absolute; margin: 0px; color: #ffffff; background: #7d4ac7; background: -moz-linear-gradient(left, #3d548c 0%, #79a7d7 100%); background: -webkit-linear-gradient(left, #3d548c 0%, #79a7d7 100%); background: linear-gradient(to right, #3d548c 0%, #79a7d7 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d548c', endColorstr='#79a7d7', GradientType=1); bottom: 0; right: 20px; z-index: 9; width: 50px; height: 40px; text-align: center; line-height: 40px; border-radius: 6px 6px 0 0; overflow: hidden; }
+#back-to-top .top i { font-size: 30px; position: absolute; left: 20px; top: 10px; -webkit-transition: all 0.3s ease-out 0s; -moz-transition: all 0.3s ease-out 0s; -ms-transition: all 0.3s ease-out 0s; -o-transition: all 0.3s ease-out 0s; transition: all 0.3s ease-out 0s; }
+#back-to-top:hover .top i { top: 0; }
+#back-to-top .top:hover { background: #a733bb; background: -moz-linear-gradient(left, #79a7d7 0%, #3d548c 100%); background: -webkit-linear-gradient(left, #79a7d7 0%, #3d548c 100%); background: linear-gradient(to right, #79a7d7 0%, #3d548c 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79a7d7', endColorstr='#3d548c', GradientType=1); color: #fff; -webkit-box-shadow: 0px 0px 30px 0px rgba(34, 34, 34, 0.1); -moz-box-shadow: 0px 0px 30px 0px rgba(34, 34, 34, 0.1); box-shadow: 0px 0px 30px 0px rgba(34, 34, 34, 0.1); }
+/*---------------------------------------------------------------------
+11 Loader
+-----------------------------------------------------------------------*/
+#loading { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 9999; }
+#loading img { width: 800px; }
+/*---------------------------------------------------------------------
+12 Form
+-----------------------------------------------------------------------*/
+form { padding: 30px 30px; background-position: left center; background-attachment: fixed; background-repeat: repeat; border-radius: 6px; }
+form .form-control { height: 45px; }
+form label { font-weight: 600; }
+form .link { color: #222222; font-weight: 600; }
+button.button { outline: inherit !important; border: none; cursor: pointer; }
+form .small-text { font-size: 14px; line-height: 20px; }

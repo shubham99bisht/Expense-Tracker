@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./static/css/imgareaselect-default.css" />
+    <script type="text/javascript" src="./static/scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="./static/scripts/jquery.imgareaselect.pack.js"></script>
+    <title>Expense Tracker - Demo</title>
+    <link rel="shortcut icon" href="./static/images/favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>    	#btn {
+            background-color: #94cae3;
+            /* padding: 10px 10px; */
+            height: 40px;
+            width: 120px;
+            border: 0;
+            border-radius: 3px;
+            position: fixed;
+          }
+          h1 {
+            text-align: center;
+            font-family: 'Roboto', serif;
+            margin: 40px;
+            font-size: 40px;
+
+          }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse" >
+      <div class="container-fluid" style="position: fixed; top: 0; width: 100%; overflow: hidden;">
+        <div class="navbar-header">
+          <!-- <a class="navbar-brand" style="text-align:center;">Please verify your Invoice Details</a> -->
+        </div></div>
+        <!-- <a style="text-align:left; margin-top:9px; margin-left:10px; color:white; display:block; position:fixed; font-size:24px;" href="/">Home</a> -->
+        <a style="text-align:left; margin-top:9px; margin-left:10px; display:block; position:fixed;" href='/'><img src="./static/images/logo.png" style="width:100px;"></a>
+        <h3 style="text-align:center; margin-top:10px;color:white;">Crop Image</h3>
+    </nav>
+    <div align="center">
+      <img id="image_crop" src="./static/images/invoice.png" alt= "pan card image " width="500" height="650">
+    </div>
+    <br>
+
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var ias = $('#image_crop').imgAreaSelect({
+          handles: true,
+          onSelectEnd: confirmFunction,
+          instance: true
+      });
+
+
+    function confirmFunction(img, selection) {
+            var r =confirm("Confirm the current selection.");
+            if (r == true) {
+              window.location.replace("demo_result");
+            } else {
+              console.log("cancel");
+              ias.cancelSelection();
+            }
+        }
+
+  });
+  </script>
+</html>

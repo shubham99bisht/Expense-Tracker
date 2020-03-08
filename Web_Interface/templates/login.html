@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login - Expense Tracker</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/favicon.png"/>
+	<style>
+		body{
+			background-image: url("./static/images/bg.png");
+		  height: 100%;
+		  background-position: center;
+		  background-repeat: no-repeat;
+		  background-size: cover;
+		}
+	</style>
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./static/fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="./static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="./static/css/main.css">
+	<!--===============================================================================================-->
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="./static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./static/css/magnific-popup.css">
+	<link rel="stylesheet" href="./static/css/circle.css">
+
+	<!-- Typography CSS -->
+	 <link rel="stylesheet" href="./static/css/owl.carousel.min.css">
+	 <link rel="stylesheet" href="./static/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="./static/css/typography.css">
+	<link rel="stylesheet" href="./static/css/style.css">
+	<link rel="stylesheet" href="./static/css/responsive.css">
+	<!--===============================================================================================-->
+	<!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+  <!-- <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script> -->
+  <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.css" /> -->
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyAkGRtjIhDYjybhdFUHmNM2FnCFA9z9-Gg",
+			authDomain: "expense-tracker-7e30c.firebaseapp.com",
+			databaseURL: "https://expense-tracker-7e30c.firebaseio.com",
+			projectId: "expense-tracker-7e30c",
+			storageBucket: "",
+			messagingSenderId: "886344330580",
+			appId: "1:886344330580:web:9c7cef3a3b72ef01d8ecc1"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<script src="./static/scripts/firebase.js"></script>
+
+	<!--FIREBASE ends -->
+
+</head>
+<body>
+
+	<!-- Header -->
+	<header id="header">
+		 <div class="container">
+				<div class="row align-items-center">
+					 <div class="col-lg-12">
+							<nav class="navbar navbar-expand-lg navbar-light" style="padding-right: 0;">
+								 <a class="navbar-brand" href="./index">
+								 <img class="logo" src="./static/images/logo.png" alt="">
+								 <img class="logo-stiky" src="./static/images/favicon.png" alt="" style="width: 44px;">
+								 </a>
+								 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+								 <span class="navbar-toggler-icon"></span>
+								 </button>
+								 <div class="collapse navbar-collapse" id="navbarNavDropdown">
+										<ul class="navbar-nav ml-auto">
+											 <li class="nav-item">
+													<a class="nav-link" href="index#papers">Papers</a>
+											 </li>
+											 <li class="nav-item">
+													<a class="nav-link" href="index#repos">Repos</a>
+											 </li>
+											 <li class="nav-item">
+													<a class="nav-link" href="index#tools">Tools</a>
+											 </li>
+											 <li class="nav-item">
+													<a class="nav-link" href="index#blogs">Blog</a>
+											 </li>
+											 <li class="nav-item">
+													<a class="nav-link" href="index#features">Active Research</a>
+											 </li>
+										</ul>
+								 </div>
+							</nav>
+					 </div>
+					 <!-- <div class="col-lg-3 text-right">
+							<ul class="login">
+							</ul>
+					 </div> -->
+				</div>
+		 </div>
+	</header>
+	<!--================================= Header -->
+
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bg-02.jpg');">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-20 p-b-20">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-49">
+						Login
+					</span>
+
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+						<span class="label-input100">Username</span>
+						<input class="input100" type="text" name="username" id="username" placeholder="Type your username">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<span class="label-input100">Password</span>
+						<input class="input100" type="password" id="password" name="pass" placeholder="Type your password">
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+
+					<div class="text-right p-t-8 p-b-31">
+						<a href="#"> Forgot password? </a>
+					</div>
+				</form>
+
+					<!-- <button type="button" onclick="warning("clicked")"> Login </button> -->
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button type="input" class="login100-form-btn" onclick="login_function()"> Login </button>
+						</div>
+					</div>
+
+					<div class="flex-col-c p-t-25">
+						<span class="txt1 p-b-17">
+							Or Sign Up Using
+						</span>
+
+						<a href="/signup" class="txt2">
+							Sign Up
+						</a>
+					</div>
+				<!-- </form> -->
+			</div>
+		</div>
+	</div>
+
+<!-- <button onclick="logout_function()"> Logout </button> -->
+
+</body>
+</html>

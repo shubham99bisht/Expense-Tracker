@@ -43,4 +43,10 @@ For the information extraction task, each image in the dataset is annotated with
 
 ## Results
 
-![](../Web_Interface/Media/demo_result.png)
+Run ` $ python test.py`. A prompt will ask for path to input image.<br/>
+The image is read using *OpenCV* and passed to *Tesseract* for OCR using *pytesseract library*. Once the text is extracted out of the image, it is passed as a sequence to the bi-LSTM model, which gives a classification at character level with prediction of classes along with probability values.<br/>
+Based on the output of the LSTM, the postprocessing algorithm converts the character level output into a JSON format with 6 key information.
+
+The visualisation shows different entities that were extracted out of a bill image by colour coding.
+
+![](./Media/s.png)

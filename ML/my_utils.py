@@ -1,6 +1,7 @@
 import random
 from difflib import SequenceMatcher
-from string import ascii_uppercase, digits
+from string import ascii_uppercase, digits, ascii_lowercase
+VOCAB = ascii_uppercase +ascii_lowercase +digits + "&$-,.%=/: \t\n"
 
 import numpy
 import regex

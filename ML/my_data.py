@@ -1,6 +1,6 @@
 import numpy, regex, torch, json, os, random
 from os import path
-from string import ascii_uppercase, digits, punctuation,ascii_lowercase
+from string import ascii_uppercase, digits,ascii_lowercase
 from torch.utils import data
 
 from my_utils import robust_padding

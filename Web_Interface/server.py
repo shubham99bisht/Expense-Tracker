@@ -93,10 +93,10 @@ def crop():
 
 @app.route("/result/<image_name>")
 def result(image_name):
-    #json = main("./static/uploads/{}.png".format(id))
-    json = {"vendor":"mohan", "date":'23/5/2019', "amount":"45","items":"colagte, pepsodent"}
+    json = main("./static/uploads/{}.png".format(id))
+    # json = {"vendor":"mohan", "date":'23/5/2019', "amount":"45","items":"colagte, pepsodent"}
     # print(jsonify(json))
-    print(json)
+    # print(json)
     return render_template("result.html",image_name=image_name, json = json)
     # return render_template("result.html",image_name=image_name, json="{'company':'abc'}")
 

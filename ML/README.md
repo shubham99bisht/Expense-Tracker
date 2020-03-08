@@ -50,3 +50,11 @@ Based on the output of the LSTM, the postprocessing algorithm converts the chara
 The visualisation shows different entities that were extracted out of a bill image by colour coding.
 
 ![](./Media/s.png)
+
+
+## Execution
+
+```
+$ python3 test.py
+>> Enter path to image:3.jpg 
+```

@@ -13,6 +13,7 @@ def prYellow(skk): print("\033[93m{}\033[00m" .format(skk), end="")
 def prBlue(skk): print("\033[34m{}\033[00m" .format(skk), end="")
 def prPurple(skk): print("\033[95m{}\033[00m" .format(skk), end="")
 def prWhite(skk): print("\033[37m{}\033[00m" .format(skk), end="")
+def prBlack(skk): print("\033[7m{}\033[00m" .format(skk), end="")
 
 def color_print(text, text_class):
     for c, n in zip(text, text_class):
@@ -24,6 +25,10 @@ def color_print(text, text_class):
             prBlue(c)
         elif n == 4:
             prYellow(c)
+        elif n == 5:
+            prPurple(c)
+        elif n == 6:
+            prBlack(c)
         else:
             prWhite(c)
     print()
@@ -64,17 +69,20 @@ def get_total(text):
             return x
     return "NIL"
 
-'''
 def pred_to_dict(text, pred, prob):
-    res = {"company": [], "date": [], "address": [], "total": [get_total(text)]}
+    # res = {"company": [], "date": [], "address": [], "total": [get_total(text)]}
+    res = {"company": [""],  "address":[""],"date": [""], "billid":[""],"total": [""],"items":[""]}
     curr, prv, ptr, ln = pred[0][0], 0, 1, len(text)
     while ptr<ln:
         while ptr<ln and pred[ptr][0]==curr:
             ptr+=1
         sample = text[prv:ptr]
         if curr==1:res["company"]+=[sample]
-        if curr==2:res["date"]+=[sample]
-        if curr==3:res["address"]+=[sample]
+        if curr==2:res["address"]+=[sample]
+        if curr==3:res["date"]+=[sample]
+        if curr==4:res["billid"]+=[sample]
+        if curr==5:res["total"]+=[sample]
+        if curr==6:res["items"]+=[sample]
         #if curr==4: total
         if ptr<ln: curr = pred[ptr][0]
         prv = ptr
@@ -87,9 +95,14 @@ def pred_to_dict(text, pred, prob):
     final_res["date"] = res["date"][0]
 
     res["address"].sort(key=lambda x: len(x), reverse=True)
-    final_res["address"] = postprocess(res["address"][0])
+    final_res["address"] = res["address"][0]
 
-    final_res["total"] = postprocess(res["total"][0])
+    res["billid"].sort(key=lambda x: len(x), reverse=True)
+    final_res["billid"] = res["billid"][0]
+
+    final_res["total"] = ''.join(filter(lambda i: i.isdigit(), res["total"][0]))
+
+    final_res["items"] = ",".join(str(x) for x in res["items"])
     #print("final_res: ",final_res)
     return final_res
 '''
@@ -112,7 +125,7 @@ def pred_to_dict(text, pred, prob):
     return {k: regex.sub(r"[\t\n]", " ", v[0].strip()) for k, v in res.items()}
 
 
-'''
+
 def pred_to_dict_orig(text, pred, prob):
     res = {"company": ("", 0), "date": ("", 0), "address": ("", 0), "total": ("", 0)}
     keys = list(res.keys())

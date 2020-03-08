@@ -11,8 +11,8 @@ def inference(text):
     device = torch.device("cpu")
     hidden_size=256
     #model = MyModel0(len(VOCAB), 16, hidden_size).to(device) #old model
-    model = MyModel0(len(VOCAB), 20, hidden_size).to(device)
-    model.load_state_dict(torch.load("model_cuda_latest.pth", map_location=torch.device('cpu')))
+    model = MyModel0(len(VOCAB), 16, hidden_size).to(device)
+    model.load_state_dict(torch.load("model.pth", map_location=torch.device('cpu')))
 
     #text = ["shubham bisht, something ahppen"]
     text_tensor = torch.zeros(len(text[0]), 1, dtype=torch.long)

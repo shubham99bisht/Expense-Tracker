@@ -64,6 +64,7 @@ def get_total(text):
             return x
     return "NIL"
 
+'''
 def pred_to_dict(text, pred, prob):
     res = {"company": [], "date": [], "address": [], "total": [get_total(text)]}
     curr, prv, ptr, ln = pred[0][0], 0, 1, len(text)
@@ -91,6 +92,24 @@ def pred_to_dict(text, pred, prob):
     final_res["total"] = postprocess(res["total"][0])
     #print("final_res: ",final_res)
     return final_res
+'''
+
+def pred_to_dict(text, pred, prob):
+    res = {"company": ("", 0),  "address": ("", 0),"date": ("", 0), "billid":("",0),"total": ("", 0),"items":("",0)}
+    keys = list(res.keys())
+
+    seps = [0] + (numpy.nonzero(numpy.diff(pred))[0] + 1).tolist() + [len(pred)]
+    for i in range(len(seps) - 1):
+        pred_class = pred[seps[i]] - 1
+        if pred_class == -1:
+            continue
+
+        new_key = keys[pred_class]
+        new_prob = prob[seps[i] : seps[i + 1]].max()
+        if new_prob > res[new_key][1]:
+            res[new_key] = (text[seps[i] : seps[i + 1]], new_prob)
+
+    return {k: regex.sub(r"[\t\n]", " ", v[0].strip()) for k, v in res.items()}
 
 
 '''

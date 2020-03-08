@@ -14,7 +14,7 @@ A method for key information extraction problem as a character-wise classificati
 
 ## Training
 
-Training data is available at `./new_data.pth`<>br/
+Training data is available at `./new_data.pth`<br/>
 <br/>*For training* of the model, please refer to [this Google Colab file](https://colab.research.google.com/drive/1RVVXHy7KRPt2qMrqCrnIIewe1b6I268T)
 <br/><br/>
 To *test* the model:

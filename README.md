@@ -4,9 +4,9 @@ Team Leader: Shubham Bisht
 
 ## **Problem Statement 2:** <br/>
 **Key Information Extraction from Scanned Receipts**: The aim of this task is to extract texts of a number of key fields from given receipts, and save the texts for each receipt image in a `json` file.
-<br/>
-&nbsp;  &nbsp;  Step 1: Extracting all the text from given Invoice Image. (Text Region Detection, OCR) <br/>
-&nbsp;  &nbsp;  Step 2: Recognising Key information from the text like Store Name, Address, Total Amount etc using **Bi-directional LSTM based approach**
+<br/><br/>
+&nbsp;  &nbsp;  **Step 1:** Extracting all the text from given Invoice Image. (Text Region Detection, OCR) <br/>
+&nbsp;  &nbsp;  **Step 2:** Recognising Key information from the text like Store Name, Address, Total Amount etc using **Bi-directional LSTM based approach**
 
 ## Usage Guide
 
@@ -16,7 +16,8 @@ This repository contains three directories. Inside each folder there are documen
 - **Folder 2 - ML**: Bi-LSTM Approach for Character-wise classification of invoice text into key entities.
 - **Folder 3 - Web UI**: A user interface for uploading Invoices and receiving results in a HTML form
 <br/>
-- **Folder 4 - Android UI**: Android interface for uploading Invoices, receiving results and 
+
+- **Folder 4 - Android UI**: Android interface for uploading Invoices, receiving results and to watch previous Bill uploads. [Find the Android Repo here](https://www.google.com)
 
 ## Approach
 
@@ -37,3 +38,4 @@ For the information extraction task, each image in the dataset is annotated with
 
 ## Results
 
+![](Web_Interface/Media/demo_result.png)

@@ -1,8 +1,10 @@
-# Unifynd Hackathon
+# Expense Tracker
 Team Name: **GroupTwo**<br/>
-Team Leader: Shubham Bisht
+Team: Shubham Bisht<br/>
+[Shadrak Gurupnor](https://github.com/shadrak98)
+Mukund Choudhary
 
-## **Problem Statement 2:** <br/>
+## **Problem Statement:** <br/>
 **Key Information Extraction from Scanned Receipts**: The aim of this task is to extract texts of a number of key fields from given receipts, and save the texts for each receipt image in a `json` file.
 <br/><br/>
 &nbsp;  &nbsp;  **Step 1:** Extracting all the text from given Invoice Image. (Text Region Detection, OCR) <br/>

@@ -201,7 +201,7 @@
 </html>
 
 <script>
-var js = JSON.parse('{{ json | tojson}}');
+var js = JSON.parse('{{ json | tojson | safe}}');
 console.log(js);
 document.getElementById("vendor").value=js.vendor;
 document.getElementById("date").value=js.date;

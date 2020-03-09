@@ -27,6 +27,8 @@ def inference(text):
     print("\n###########################\n")
     print(json)
 
+    # for x
+
     # with open("results/" + key + ".json", "w", encoding="utf-8") as json_opened:
     #     json.dump(result, json_opened, indent=4)
 

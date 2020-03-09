@@ -3,8 +3,56 @@ import flask
 from flask import Flask, render_template, request, send_from_directory, redirect, url_for, jsonify
 import shutil, os
 app = Flask(__name__)
-from eval import main
+# from eval import main
 import pytesseract
+import json
+
+
+import torch
+from my_models import MyModel0
+from my_utils import pred_to_dict, VOCAB, color_print, preprocess
+import json
+import cv2
+import pytesseract
+
+
+def inference(text):
+    text[0] = preprocess(text[0])
+    device = torch.device("cpu")
+    hidden_size=256
+    #model = MyModel0(len(VOCAB), 16, hidden_size).to(device) #old model
+    model = MyModel0(len(VOCAB), 16, hidden_size).to(device)
+    model.load_state_dict(torch.load("model.pth", map_location=torch.device('cpu')))
+
+    #text = ["shubham bisht, something ahppen"]
+    text_tensor = torch.zeros(len(text[0]), 1, dtype=torch.long)
+    text_tensor[:, 0] = torch.LongTensor([VOCAB.find(c) for c in text[0].upper()])
+    #print(text_tensor)
+    inp = text_tensor.to(device)
+
+    oupt = model(inp)
+    prob = torch.nn.functional.softmax(oupt, dim=2)
+    prob, pred = torch.max(prob, dim=2)
+
+    color_print(text[0], pred)
+    json = pred_to_dict(text[0], pred, prob)
+    print("\n###########################\n")
+    return json
+
+def tesseract_img(imgcv):
+    text = pytesseract.image_to_string(imgcv,config="--psm 3") #default 3
+    #1    Automatic page segmentation with OSD.
+    #3    Fully automatic page segmentation, but no OSD. (Default)
+    return inference([text])
+
+def main(path_to_image, result_path = "temp"):
+    imgcv = cv2.imread(path_to_image)
+    json_data = tesseract_img(imgcv)
+    # with open('results/{}.json'.format(result_path), 'w') as fp:
+        # json.dump(json_data, fp)
+    return json_data
+
+
 
 #Basic Web Pages
 #-------------------------------------------------------------------------------------------
@@ -54,7 +102,8 @@ def invoice_upload():
         basedir = os.path.abspath(os.path.dirname(__file__))
         f.save(os.path.join(basedir, "static/uploads/", str(id)+".png"))
         json = main(os.path.join(basedir, "static/uploads/", str(id)+".png"))
-        return render_template("result.html",image_name=id, json = json)
+        print("from below", json, type(json))
+        return render_template("results.html",image_name=id, json=json)
         # return render_template("crop.html", image_name=id)
 '''
 
@@ -94,13 +143,13 @@ def crop():
     # return "Hello World"
     return redirect(url_for("result",image_name=id))
 
-@app.route("/result/<image_name>")
-def result(image_name):
-    json = main("./static/uploads/{}.png".format(id))
-    # json = {"vendor":"mohan", "date":'23/5/2019', "amount":"45","items":"colagte, pepsodent"}
-    # print(jsonify(json))
-    # print(json)
-    return render_template("result.html",image_name=image_name, json = json)
+# @app.route("/result/<image_name>")
+# def result(image_name):
+#     json = main("./static/uploads/{}.png".format(id))
+#     # json = {"vendor":"mohan", "date":'23/5/2019', "amount":"45","items":"colagte, pepsodent"}
+#     # print(jsonify(json))
+#     # print(json)
+#     return render_template("result.html",image_name=image_name, json = json)
     # return render_template("result.html",image_name=image_name, json="{'company':'abc'}")
 
 # Android Specific Functions

@@ -95,7 +95,7 @@ def pred_to_dict(text, pred, prob):
     final_res["date"] = res["date"][0]
 
     res["address"].sort(key=lambda x: len(x), reverse=True)
-    final_res["address"] = res["address"][0]
+    final_res["address"] = postprocess(res["address"][0])
 
     res["billid"].sort(key=lambda x: len(x), reverse=True)
     final_res["billid"] = res["billid"][0]

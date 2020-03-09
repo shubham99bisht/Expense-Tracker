@@ -41,4 +41,4 @@ def main(path_to_image, result_path = "temp"):
     json_data = tesseract_img(imgcv)
     # with open('results/{}.json'.format(result_path), 'w') as fp:
         # json.dump(json_data, fp)
-    return json
+    return str(json)

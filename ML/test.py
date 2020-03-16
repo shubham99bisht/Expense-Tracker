@@ -1,9 +1,8 @@
 import torch
+import json, cv2, pytesseract
 from my_data import VOCAB, color_print
 from my_models import MyModel0
 from my_utils import pred_to_dict, preprocess
-import json, cv2, pytesseract
-
 
 def inference(text):
     text[0] = preprocess(text[0])
@@ -26,16 +25,10 @@ def inference(text):
     json = pred_to_dict(text[0], pred, prob)
     print("\n###########################\n")
     print(json)
-
-    # for x
-
-    # with open("results/" + key + ".json", "w", encoding="utf-8") as json_opened:
-    #     json.dump(result, json_opened, indent=4)
-
     return json
 
 def tesseract_img(imgcv):
-    text = pytesseract.image_to_string(imgcv,config="--psm 3") #default 3
+    text = pytesseract.image_to_string(imgcv,config="--psm 1") #default 3
     #1    Automatic page segmentation with OSD.
     #3    Fully automatic page segmentation, but no OSD. (Default)
     return inference([text])
@@ -43,11 +36,8 @@ def tesseract_img(imgcv):
 def main(path_to_image):
     imgcv = cv2.imread(path_to_image)
     json_data = tesseract_img(imgcv)
-    #with open('results/{}.json'.format(result_path), 'w') as fp:
-        #json.dump(json_data, fp)
-    #print(json)
+    return json_data
 
 if __name__ == "__main__":
     img_path = input("Enter path to image:")
-    #res_path = input("Enter path to store results:")
     main(img_path)

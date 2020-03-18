@@ -1,0 +1,19 @@
+ 
+
+Delivery Boy:
+
+Date:2019-11-21 17:01:13
+Kots:0
+
+Total Qty: 1
+SubTotal:
+
+GSTE5%
+
+CGST 2.5 4.29
+SGST 2.5 4.29
+
+Round Off: 0.00
+Total Invoice value 180
+
+ 

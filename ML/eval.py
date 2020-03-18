@@ -11,7 +11,7 @@ def inference(text):
     model = MyModel0(len(VOCAB), 16, hidden_size).to(device)
     model.load_state_dict(torch.load("model.pth", map_location=torch.device('cpu')))
 
-    #text = ["shubham bisht, something ahppen"]
+    #text = ["shubham bisht, something happens"]
     text_tensor = torch.zeros(len(text[0]), 1, dtype=torch.long)
     text_tensor[:, 0] = torch.LongTensor([VOCAB.find(c) for c in text[0].upper()])
     #print(text_tensor)
@@ -35,8 +35,8 @@ def tesseract_img(imgcv):
 
 def main(path_to_image):
     imgcv = cv2.imread(path_to_image)
-    json_data = tesseract_img(imgcv)
-    return json_data
+    json = tesseract_img(imgcv)
+    return json
 
 if __name__ == "__main__":
     img_path = input("Enter path to image:")

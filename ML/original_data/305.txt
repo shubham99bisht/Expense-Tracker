@@ -1,0 +1,45 @@
+ 
+
+CITYMAX HOTELS NDIA PVT. LTD
+
+KK-MARKETCITY ATRIUM CHN
+
+KRISPY KREME, NO. 142, VELACHERY, G
+FLOOR, PHOENIX MARKET CITY
+CHENNAI - PIN-6000
+
+Billina State : TAMILNADU
+State Code : 33
+GSTIN : 33AACCC7765R1Z0
+SAC Code: 996331
+CIN NO : U55101KA2005PTC037255
+
+Carry Out
+Rill No TNCHN18119/34401
+Order Time: 26 Dec 2019 05:43 nm
+Print Time: 26 Dec 2019 05:43 om
+
+ 
+
+Cashier: KK SIVACHN
+POS: 126 PAX: 1
+Token No: 344
+Item Name Qty Rate Basic Net
+Amt Amt 
+
+HOT CHOCOLATE S 1 176.2 176.2 17h
+oeorestenseromaccel Basic Amt: .176.20
+
+CGST 2.5 % 176.20 4.40
+
+SGST 2.5 % 176.20 4,40
+
+ TOTAL: -18500 
+Payment Details
+CreditCard Amt:  185.00
+
+BILL PAID
+
+Oo 
+
+ 

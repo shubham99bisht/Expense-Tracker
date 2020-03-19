@@ -1,6 +1,7 @@
 import random, numpy, regex, re
 from difflib import SequenceMatcher
 from fuzzywuzzy import fuzz
+from date_regex import get_date
 
 from string import ascii_uppercase, digits, ascii_lowercase
 VOCAB = ascii_uppercase +ascii_lowercase +digits + "&$-,.%=/: \t\n"
@@ -72,26 +73,13 @@ def get_total(text):
             except: pass
     return max(amount) if amount else "NIL"
 
+'''
 def get_date(text):
     dates=set()
     lines = text.split("\n")
     for data in lines:
-        if 'W.E.F' in data:
+        if 'w.e.f' in data.lower():
             continue
-        '''
-        f1 = re.findall(r'(\d{1,4}[.\-/]\d{1,2}[.\-/]\d{1,4})',data)
-        f2 = re.findall(r'(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\s+\d{1,2},\s+\d{4}',data)
-        f3 = re.findall(r'\d{1,2}[\,|\/|\-](Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)[\,|\/|\-]\d{4}',data)
-        f4 = re.findall(r'\d{1,2}[\,|\/|\-](Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)[\,|\/|\-]\d{2}',data)
-
-        for i in f1: dates.add(i)
-        for i in f2: dates.add(i)
-        for i in f3: dates.add(i)
-        for i in f4: dates.add(i)
-        '''
-        regEx = r'(?:\d{1,2}[-/th|st|nd|rd\s]*)?(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)?[a-z\s,.]*(?:\d{1,2}[-/th|st|nd|rd)\s,]*)+(?:\d{2,4})+'
-
-        (?:\d{1,2}[-/th|st|nd|rd\s]*) ?(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)?[\s,.-](?:\d{1,2}[-/th|st|nd|rd)\s,]*)+(?:\d{2,4})+
         temp = re.findall(regEx, data)
         for i in temp: dates.add(i)
 
@@ -99,6 +87,7 @@ def get_date(text):
     dates = list(dates)
     print("\nSuspected values for Date: ", dates)
     return dates[0] if dates else "Not Found"
+'''
 
 def pred_to_dict(text, pred, prob):
     # res = {"company": [], "date": [], "address": [], "total": [get_total(text)]}

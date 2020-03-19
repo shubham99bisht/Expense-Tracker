@@ -1,5 +1,6 @@
 import os, random
-from my_utils import get_total, get_date
+from my_utils import get_total
+from date_regex import get_date
 
 folder = "original_data"
 files = os.listdir(folder)

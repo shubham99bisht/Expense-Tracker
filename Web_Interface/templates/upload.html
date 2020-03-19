@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <html>
 <style>
   h4 {
@@ -7,21 +8,21 @@
     font-family: 'Roboto', serif;
     height: 25px;
   }
-  h1 {
+  h2 {
     text-align: center;
     font-family: 'Roboto', serif;
-    margin: 40px;
-    font-size: 40px;
+    margin: 10px;
+    /* font-size: 40px; */
 
   }
     .outerBox {
-    width: 425px;
+    width: 525px;
     border: 3px solid #ccc;
     border-radius: 40px;
     margin: 10px 30px;
     padding: 10px;
     text-align: center;
-    background-color: #efefef;
+    background-color: white;
 
   }
   .cardContent {
@@ -53,22 +54,47 @@
     height: 40px;
     width: 90px;
     padding: 10px;
-    margin: 20px auto;
+    /* margin: 20px 0px; */
     border: 0;
     border-radius: 3px;
   }
-  .button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 10px 22px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
+    .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+
+  .upload-container {
+    background-color: rgb(239, 239, 239);
+    border-radius: 6px;
+    padding: 10px;
+  }
+
+  .border-container {
+    border: 5px dashed rgba(198, 198, 198, 0.65);
+    border-radius: 6px;
+    padding: 20px;
+  }
+
+  .border-container p {
+    color: #130f40;
+    font-weight: 600;
+    font-size: 1.1em;
+    letter-spacing: -1px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    opacity: 0.65;
+  }
+
+
 </style>
 <head>
   <title>Expense Tracker- Upload Invoice</title>
@@ -98,8 +124,9 @@
   <!-- FIREBASE ends -->
 </head>
 <body onload="getUser()">
-<div>
-  <h1>Upload Invoice/Bill Image</h1>
+  <div>
+    <!-- <h1>Upload Invoice/Bill Image</h1>   -->
+    <br><br>
   <div>
 
 <!-- Invoice Upload form  -->
@@ -107,18 +134,36 @@
   <div>
   <div class="cardContent">
     <div class="cardText">
-      <h4>Upload images or screenshot of bill payments</h4>
-          <img class = "image-size" src="../static/images/upload.png">
-          <br><br><br>
-      <form action = "/invoice_upload" method = "POST" enctype = "multipart/form-data">
-         <input type = "file" name = "image" accept="image/*" align="center" required>
-         <input type = "text" id="uid" name = "uid" value="None" required style="display:none;">
-         <input id = "btn" type = "submit" value="Upload" style = "font-size:16px; text-decoration: none; cursor: pointer;">
-         <br><br>
-      </form>
-      <form  action = "/demo_crop">
+      <h2 style="margin-bottom:12px;">Upload Invoice Image</h2>
+      <div class="upload-container">
+        <div class="border-container">
+            <img class = "image-size" src="../static/images/upload.png">
+            <br><br><br>
+            <form action = "/invoice_upload" method = "POST" enctype = "multipart/form-data">
+               <!-- <input type = "file" name = "image" accept="image/*" align="center" required style="display:unset;"> -->
+               <input type = "text" id="uid" name = "uid" value="None" required style="display:none;">
+
+               <div class="form-group">
+                 <input type="file" class="form-control-file btn btn-warning" id="exampleFormControlFile1" name = "image" accept="image/*">
+               </div>
+
+               <div class="form-group">
+                  <select class="form-control" id="sel1" style="height:40px; margin:10px;">
+                    <option>1. Automatic Cropping - Recommended when high contrast with background.</option>
+                    <option>2. Manual Cropping - Recommended for better accuracy.</option>
+                    <option>3. Image contains only Bill - no crop required.</option>
+                  </select>
+               </div>
+               <input id = "btn" type = "submit" value="Upload" style = "font-size:16px; text-decoration: none; cursor: pointer;">
+            </form>
+        </div>
+      </div>
+
+      <br><br>
+      <form  action = "/demo_crop" target="_blank" style="margin-bottom:-50px;">
         <button class="button">Demo</button>
       </form>
+
     </div>
   </div>
 </div>

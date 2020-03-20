@@ -139,7 +139,7 @@
         <div class="border-container">
             <img class = "image-size" src="../static/images/upload.png">
             <br><br><br>
-            <form action = "/invoice_upload" method = "POST" enctype = "multipart/form-data">
+            <form action = "/upload_and_crop" method = "POST" enctype = "multipart/form-data">
                <!-- <input type = "file" name = "image" accept="image/*" align="center" required style="display:unset;"> -->
                <input type = "text" id="uid" name = "uid" value="None" required style="display:none;">
 
@@ -148,7 +148,7 @@
                </div>
 
                <div class="form-group">
-                  <select class="form-control" id="sel1" style="height:40px; margin:10px;">
+                  <select class="form-control" id="sel1" style="height:40px; margin:10px;" name="option">
                     <option>1. Automatic Cropping - Recommended when high contrast with background.</option>
                     <option>2. Manual Cropping - Recommended for better accuracy.</option>
                     <option>3. Image contains only Bill - no crop required.</option>

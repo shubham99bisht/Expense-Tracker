@@ -15,10 +15,6 @@ import json
 def index():
     return render_template("index.html")
 
-@app.route("/test/<msg>")
-def test(msg):
-    return "Hello"+str(msg)
-
 @app.route("/login")
 def login():
     return render_template("login.html")
@@ -45,8 +41,52 @@ def demo_crop():
 def demo_result():
     return render_template("demo_result.html")
 
+@app.route("/chart")
+def chart():
+    return render_template("charts.html")
 # Web Upload Functions
 #-------------------------------------------------------------------------------------------
+@app.route("/upload_and_crop", methods=["POST"])
+def upload_and_crop():
+    if request.method == "POST":
+        f = request.files["image"]
+        image_name = str(int(time.time()))
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        f.save(os.path.join(basedir, "static/uploads/", image_name + ".png"))
+        uid = request.form.get("uid")
+        option = request.form.get("option")
+        option = int(option.split(".")[0])
+
+        if option == 1:
+            pass
+        if option == 2:
+            return render_template("crop.html", image_name=image_name)
+        if option == 3:
+            json = main(os.path.join(basedir, "static/uploads/", image_name+".png"))
+            print(json, type(json))
+            return render_template("result.html",image_name=image_name, json=json)
+
+@app.route("/crop_and_result", methods=["POST"])
+def crop_and_result():
+    id, x1,y1,x2,y2 = request.form["id"],int(request.form["x1"]),int(request.form["y1"]),int(request.form["x2"]),int(request.form["y2"])
+    print(id, x1,y1,x2,y2)
+    img = cv2.imread("./static/uploads/{}.png".format(id))
+    yo, xo, ch = img.shape
+    scale = yo/650
+    y1_new = scale*y1
+    x1_new = scale*x1
+    y2_new = scale*y2
+    x2_new = scale*x2
+    img_crop = img[int(y1_new):int(y2_new), int(x1_new):int(x2_new)]
+    cv2.imwrite("./static/uploads/{}_crop.png".format(id), img_crop)
+    time.sleep(1)
+
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    json = main(os.path.join(basedir, "static/uploads/", id+"_crop.png"))
+    return render_template("result.html",image_name=id+"_crop", json=json)
+    # return redirect(url_for("result",image_name=id))
+
+'''
 @app.route("/invoice_upload", methods=["POST"])
 def invoice_upload():
     if request.method == "POST":
@@ -55,10 +95,14 @@ def invoice_upload():
         basedir = os.path.abspath(os.path.dirname(__file__))
         f.save(os.path.join(basedir, "static/uploads/", str(id)+".png"))
         json = main(os.path.join(basedir, "static/uploads/", str(id)+".png"))
+
+        print("\n\n\n-------------------------------------------------------------------------------------------\n\n\n")
         print("from below", json, type(json))
-        return render_template("results.html",image_name=id, json=json)
+        print("uid: ",request.form.get("uid"))
+        print("option: ",request.form.get("option"))
+        return render_template("result.html",image_name=id, json=json)
         # return render_template("crop.html", image_name=id)
-'''
+
 
 @app.route("/invoice_upload", methods=["POST"])
 def invoice_upload():
@@ -79,22 +123,6 @@ def crop(id,x1,y1,x2,y2):
     # return redirect(url_for("/show",image_name=id))
     return redirect(url_for("result",image_name=id))
 '''
-
-@app.route("/crop", methods=["POST"])
-def crop():
-    id, x1,y1,x2,y2 = int(request.form["id"]),int(request.form["x1"]),int(request.form["y1"]),int(request.form["x2"]),int(request.form["y2"])
-    print(id, x1,y1,x2,y2)
-    img = cv2.imread("./static/uploads/{}.png".format(id))
-    yo, xo, ch = img.shape
-    scale = yo/650
-    y1_new = scale*y1
-    x1_new = scale*x1
-    y2_new = scale*y2
-    x2_new = scale*x2
-    img_crop = img[int(y1_new):int(y2_new), int(x1_new):int(x2_new)]
-    cv2.imwrite("./static/uploads/{}.png".format(id), img_crop)
-    # return "Hello World"
-    return redirect(url_for("result",image_name=id))
 
 # @app.route("/result/<image_name>")
 # def result(image_name):

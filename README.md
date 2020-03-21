@@ -1,8 +1,8 @@
 # Expense Tracker
 Team Name: **GroupTwo**<br/>
 Team: Shubham Bisht<br/>
-[Shadrak Gurupnor](https://github.com/shadrak98)
-Mukund Choudhary
+[Shadrak Gurupnor](https://github.com/shadrak98)<br/>
+[Mukund Choudhary](https://github.com/mukund126)
 
 ## **Problem Statement:** <br/>
 **Key Information Extraction from Scanned Receipts**: The aim of this task is to extract texts of a number of key fields from given receipts, and save the texts for each receipt image in a `json` file.

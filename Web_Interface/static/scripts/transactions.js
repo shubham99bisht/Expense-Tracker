@@ -18,7 +18,8 @@ function fill_transaction_Details()
 			var a4= '</div><div class="col-md-2">';
 			var a5 = '</div><div class="col-md-1"><div style="font-size:20px;"><a target="_blank" href="';
 			var a6 = '"><i class="fa fa-image"></i></a></div></div><div class="col-md-1">  <div style="font-size:20px;">';
-			var a7 = '</div></div>  <div class="col-md-1"><div style="font-size:20px;"><a target="_blank" href="https://www.google.com"><i class="fa fa-edit" style="color:blue;"></i></a></div></div>';
+			var a7 = '</div></div>  <div class="col-md-1"><div style="font-size:20px;"><a target="_blank" href="/result_verification/'
+			var a77 = '"><i class="fa fa-edit" style="color:blue;"></i></a></div></div>';
 			var a8 = '<div class="col-md-1"><div style="font-size:20px;"><i class="fa fa-trash" onclick="DeleteByID('
 			var a9 = ')"></i></div></div>';
 
@@ -35,6 +36,7 @@ function fill_transaction_Details()
 					abc = abc + jsn[transid]["Link"] + a6;
 					if(jsn[transid]["Status"]==1){abc = abc+ '<i class="fa fa-check" aria-hidden="true" style="color:darkgreen"></i>'+ a7;}
 					if(jsn[transid]["Status"]==0){abc = abc+ '<i class="fa fa-circle" aria-hidden="true" style="color:orange"></i>'+ a7;}
+					abc = abc +transid+ a77;
 					abc = abc + a8 +"'"+transid +"'"+ a9;
 					// console.log(abc);
 		      document.getElementById(g.id).innerHTML=abc;}

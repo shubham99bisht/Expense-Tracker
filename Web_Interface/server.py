@@ -89,9 +89,10 @@ def crop_and_result():
 
 # Result Verification Page
 #-------------------------------------------------------------------------------------------
-@app.route("/result_verification/<image_name>")
-def result_verification(image_name):
-    return render_template("result_verification.html",image_name=image_name)
+@app.route("/result_verification/<billid>")
+def result_verification(billid):
+    billid = int(billid)
+    return render_template("result_verification.html",billid=billid)
 
 # Android Specific Functions
 #-------------------------------------------------------------------------------------------

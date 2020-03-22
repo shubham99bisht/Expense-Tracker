@@ -23,6 +23,14 @@ def login():
 def signup():
     return render_template("signup.html")
 
+@app.route("/demo_crop")
+def demo_crop():
+    return render_template("demo_crop.html")
+
+@app.route("/demo_result")
+def demo_result():
+    return render_template("demo_result.html")
+
 #Main Web Pages
 #-------------------------------------------------------------------------------------------
 @app.route("/transaction")
@@ -33,38 +41,32 @@ def transaction():
 def upload():
     return render_template("upload.html")
 
-@app.route("/demo_crop")
-def demo_crop():
-    return render_template("demo_crop.html")
-
-@app.route("/demo_result")
-def demo_result():
-    return render_template("demo_result.html")
-
 @app.route("/chart")
 def chart():
-    return render_template("charts.html")
+    return render_template("chart.html")
+
 # Web Upload Functions
 #-------------------------------------------------------------------------------------------
 @app.route("/upload_and_crop", methods=["POST"])
 def upload_and_crop():
     if request.method == "POST":
         f = request.files["image"]
-        image_name = str(int(time.time()))
+        uid = request.form.get("uid")
+        billid = request.form.get("billid")
+        image_name = uid+"_"+billid
         basedir = os.path.abspath(os.path.dirname(__file__))
         f.save(os.path.join(basedir, "static/uploads/", image_name + ".png"))
-        uid = request.form.get("uid")
+
         option = request.form.get("option")
         option = int(option.split(".")[0])
 
         if option == 1:
-            pass
-        if option == 2:
             return render_template("crop.html", image_name=image_name)
-        if option == 3:
+        if option == 2:
             json = main(os.path.join(basedir, "static/uploads/", image_name+".png"))
             print(json, type(json))
-            return render_template("result.html",image_name=image_name, json=json)
+            return render_template("result.html",image_name=image_name, json=json, uid=image_name.split("_")[0], billid=image_name.split("_")[1])
+            # return render_template("result.html",image_name=image_name, json=json)
 
 @app.route("/crop_and_result", methods=["POST"])
 def crop_and_result():
@@ -83,55 +85,13 @@ def crop_and_result():
 
     basedir = os.path.abspath(os.path.dirname(__file__))
     json = main(os.path.join(basedir, "static/uploads/", id+"_crop.png"))
-    return render_template("result.html",image_name=id+"_crop", json=json)
-    # return redirect(url_for("result",image_name=id))
+    return render_template("result.html",image_name=id+"_crop", json=json, uid=id.split("_")[0], billid=id.split("_")[1])
 
-'''
-@app.route("/invoice_upload", methods=["POST"])
-def invoice_upload():
-    if request.method == "POST":
-        f= request.files["image"]
-        id = int(time.time())
-        basedir = os.path.abspath(os.path.dirname(__file__))
-        f.save(os.path.join(basedir, "static/uploads/", str(id)+".png"))
-        json = main(os.path.join(basedir, "static/uploads/", str(id)+".png"))
-
-        print("\n\n\n-------------------------------------------------------------------------------------------\n\n\n")
-        print("from below", json, type(json))
-        print("uid: ",request.form.get("uid"))
-        print("option: ",request.form.get("option"))
-        return render_template("result.html",image_name=id, json=json)
-        # return render_template("crop.html", image_name=id)
-
-
-@app.route("/invoice_upload", methods=["POST"])
-def invoice_upload():
-    if request.method == "POST":
-        f= request.files["image"]
-        id = int(time.time())
-        basedir = os.path.abspath(os.path.dirname(__file__))
-        f.save(os.path.join(basedir, "static/uploads", str(id)+".png"))
-        return render_template("crop.html", image_name=id)
-
-@app.route("/crop/<id>/<x1>/<y1>/<x2>/<y2>")
-def crop(id,x1,y1,x2,y2):
-    print(id,x1,y1,x2,y2)
-    img = cv2.imread("./static/uploads/{}.png".format(id))
-    img_crop = img[int(y1):int(y2), int(x1):int(x2)]
-    cv2.imwrite("./static/uploads/{}.png".format(id), img_crop)
-    #json = main("./static/uploads/{}.png".format(id))
-    # return redirect(url_for("/show",image_name=id))
-    return redirect(url_for("result",image_name=id))
-'''
-
-# @app.route("/result/<image_name>")
-# def result(image_name):
-#     json = main("./static/uploads/{}.png".format(id))
-#     # json = {"vendor":"mohan", "date":'23/5/2019', "amount":"45","items":"colagte, pepsodent"}
-#     # print(jsonify(json))
-#     # print(json)
-#     return render_template("result.html",image_name=image_name, json = json)
-    # return render_template("result.html",image_name=image_name, json="{'company':'abc'}")
+# Result Verification Page
+#-------------------------------------------------------------------------------------------
+@app.route("/result_verification/<image_name>")
+def result_verification(image_name):
+    return render_template("result_verification.html",image_name=image_name)
 
 # Android Specific Functions
 #-------------------------------------------------------------------------------------------

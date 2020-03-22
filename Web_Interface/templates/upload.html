@@ -2,180 +2,238 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <html>
-<style>
-  h4 {
-    text-align: center;
-    font-family: 'Roboto', serif;
-    height: 25px;
-  }
-  h2 {
-    text-align: center;
-    font-family: 'Roboto', serif;
-    margin: 10px;
-    /* font-size: 40px; */
+  <style>
+    h4 {
+      text-align: center;
+      font-family: 'Roboto', serif;
+      height: 25px;
+    }
+    h2 {
+      text-align: center;
+      font-family: 'Roboto', serif;
+      margin: 10px;
+      /* font-size: 40px; */
 
-  }
-    .outerBox {
-    width: 525px;
-    border: 3px solid #ccc;
-    border-radius: 40px;
-    margin: 10px 30px;
-    padding: 10px;
-    text-align: center;
-    background-color: white;
+    }
+      .outerBox {
+      width: 525px;
+      border: 3px solid #ccc;
+      border-radius: 40px;
+      margin: 10px 30px;
+      padding: 10px;
+      text-align: center;
+      background-color: white;
 
-  }
-  .cardContent {
-    padding: 10px;
-  }
-  .cardText {
-    margin-bottom: 50px;
+    }
+    .cardContent {
+      padding: 10px;
+    }
+    .cardText {
+      margin-bottom: 50px;
 
-  }
-  body {
-    background-image: url("../static/images/bg.png");
-    /* background-image: linear-gradient(to right bottom, #93d9fc, #66c6ff, #38b1ff, #009bff, #1482ff); */
-    align-content: center;
-    text-align: center;
-  }
-  .image-size{
-    width: 200px;
-  }
-  div {
-    display: inline-block;
+    }
+    body {
+      background-image: url("../static/images/bg.png");
+      /* background-image: linear-gradient(to right bottom, #93d9fc, #66c6ff, #38b1ff, #009bff, #1482ff); */
+      align-content: center;
+      text-align: center;
+    }
+    .image-size{
+      width: 200px;
+    }
+    div {
+      display: inline-block;
 
-  }
-  head {
-    text-align: center;
-  }
-  #btn {
-    background-color: #94cae3;
-    /* padding: 10px 10px; */
-    height: 40px;
-    width: 90px;
-    padding: 10px;
-    /* margin: 20px 0px; */
-    border: 0;
-    border-radius: 3px;
-  }
-    .button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 22px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
+    }
+    head {
+      text-align: center;
+    }
+    #btn {
+      background-color: #94cae3;
+      /* padding: 10px 10px; */
+      height: 40px;
+      width: 90px;
+      padding: 10px;
+      /* margin: 20px 0px; */
+      border: 0;
+      border-radius: 3px;
+    }
 
-
-  .upload-container {
-    background-color: rgb(239, 239, 239);
-    border-radius: 6px;
-    padding: 10px;
-  }
-
-  .border-container {
-    border: 5px dashed rgba(198, 198, 198, 0.65);
-    border-radius: 6px;
-    padding: 20px;
-  }
-
-  .border-container p {
-    color: #130f40;
-    font-weight: 600;
-    font-size: 1.1em;
-    letter-spacing: -1px;
-    margin-top: 30px;
-    margin-bottom: 0;
-    opacity: 0.65;
-  }
+      .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 22px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
 
 
-</style>
-<head>
-  <title>Expense Tracker- Upload Invoice</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="./static/images/favicon.png">
+    .upload-container {
+      background-color: rgb(239, 239, 239);
+      border-radius: 6px;
+      padding: 10px;
+    }
 
-  <!-- FIREBASE -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script> -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script> -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script> -->
+    .border-container {
+      border: 5px dashed rgba(198, 198, 198, 0.65);
+      border-radius: 6px;
+      padding: 20px;
+    }
 
-  <!-- <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyAkGRtjIhDYjybhdFUHmNM2FnCFA9z9-Gg",
-      authDomain: "expense-tracker-7e30c.firebaseapp.com",
-      databaseURL: "https://expense-tracker-7e30c.firebaseio.com",
-      projectId: "expense-tracker-7e30c",
-      storageBucket: "",
-      messagingSenderId: "886344330580",
-      appId: "1:886344330580:web:9c7cef3a3b72ef01d8ecc1"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script> -->
-  <!-- <script src="./static/scripts/firebase.js"></script> -->
-  <!-- FIREBASE ends -->
-</head>
-<body onload="getUser()">
-  <div>
-    <!-- <h1>Upload Invoice/Bill Image</h1>   -->
-    <br><br>
-  <div>
+    .border-container p {
+      color: #130f40;
+      font-weight: 600;
+      font-size: 1.1em;
+      letter-spacing: -1px;
+      margin-top: 30px;
+      margin-bottom: 0;
+      opacity: 0.65;
+    }
 
-<!-- Invoice Upload form  -->
-<div class="outerBox">
-  <div>
-  <div class="cardContent">
-    <div class="cardText">
-      <h2 style="margin-bottom:12px;">Upload Invoice Image</h2>
-      <div class="upload-container">
-        <div class="border-container">
-            <img class = "image-size" src="../static/images/upload.png">
-            <br><br><br>
-            <form action = "/upload_and_crop" method = "POST" enctype = "multipart/form-data">
-               <!-- <input type = "file" name = "image" accept="image/*" align="center" required style="display:unset;"> -->
-               <input type = "text" id="uid" name = "uid" value="None" required style="display:none;">
 
-               <div class="form-group">
-                 <input type="file" class="form-control-file btn btn-warning" id="exampleFormControlFile1" name = "image" accept="image/*">
-               </div>
+  </style>
+  <head>
+    <title>Expense Tracker- Upload Invoice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./static/images/favicon.png">
 
-               <div class="form-group">
-                  <select class="form-control" id="sel1" style="height:40px; margin:10px;" name="option">
-                    <option>1. Automatic Cropping - Recommended when high contrast with background.</option>
-                    <option>2. Manual Cropping - Recommended for better accuracy.</option>
-                    <option>3. Image contains only Bill - no crop required.</option>
-                  </select>
-               </div>
-               <input id = "btn" type = "submit" value="Upload" style = "font-size:16px; text-decoration: none; cursor: pointer;">
-            </form>
+    <!-- FIREBASE -->
+      <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-storage.js"></script>
+
+      <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyAkGRtjIhDYjybhdFUHmNM2FnCFA9z9-Gg",
+          authDomain: "expense-tracker-7e30c.firebaseapp.com",
+          databaseURL: "https://expense-tracker-7e30c.firebaseio.com",
+          projectId: "expense-tracker-7e30c",
+          storageBucket: "gs://expense-tracker-7e30c.appspot.com/",
+          messagingSenderId: "886344330580",
+          appId: "1:886344330580:web:9c7cef3a3b72ef01d8ecc1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      </script>
+      <script src="./static/scripts/firebase.js"></script>
+      <!-- <script src="./static/scripts/upload.js"></script> -->
+    <!-- FIREBASE ends -->
+
+    <!-- Uploading image to Firebase and submitting the form -->
+    <script>
+      function getUser(){
+        console.log("Called");
+        var user = firebase.auth().currentUser;
+        var userid = user.uid;
+        document.getElementById("uid").value =userid;
+        console.log(userid);
+        var ref = firebase.database().ref('users/'+userid);
+
+        ref.once('value', function(snapshot) {
+          // console.log(snapshot.val());
+          jsn = snapshot.val();
+          console.log(jsn["Prev_id"]);
+          document.getElementById("billid").value = String(parseInt(jsn["Prev_id"])+1);
+          document.getElementById("btn").removeAttribute("disabled");
+        });
+      }
+
+      function upload_image(){
+
+        var userid = document.getElementById("uid").value;
+        var billid = document.getElementById("billid").value;
+        var file = document.getElementById('image').files[0];
+         var storageRef = firebase.storage().ref();
+         // Upload file and metadata to the object 'images/mountains.jpg'
+         var uploadTask = storageRef.child(userid +'/'+ billid +'/'+ file.name).put(file);
+         // Listen for state changes, errors, and completion of the upload.
+         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+           function(snapshot) {
+             // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+             console.log('Upload is ' + progress + '% done');
+             switch (snapshot.state) {
+               case firebase.storage.TaskState.PAUSED: // or 'paused'
+                 console.log('Upload is paused');
+                 break;
+               case firebase.storage.TaskState.RUNNING: // or 'running'
+                 console.log('Upload is running');
+                 break;
+             }
+           }, function(error) {}, function() {
+           // Upload completed successfully, now we can get the download URL
+           uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+             firebase.database().ref('Bills/'+userid +'/'+ billid).set({
+               "Company":"", "Address":"", "Amount":"", "Items":"", "Date":"",
+               "Link":downloadURL});
+             console.log('File available at', downloadURL);
+             firebase.database().ref('users/'+userid).update({
+               "Prev_id":billid
+             });
+             document.getElementById("myForm").submit();
+           });
+         });
+
+
+
+     }
+    </script>
+  </head>
+
+  <body>
+    <div><br><div>
+
+    <!-- Invoice Upload form  -->
+    <div class="outerBox">
+      <div>
+      <div class="cardContent">
+        <div class="cardText">
+          <h2 style="margin-bottom:12px;">Upload Invoice Image</h2>
+          <div class="upload-container">
+            <div class="border-container">
+                <img class = "image-size" src="../static/images/upload.png">
+                <br><br><br>
+                <form action = "/upload_and_crop" method = "POST" enctype = "multipart/form-data" id="myForm">
+                   <!-- <input type = "file" name = "image" accept="image/*" align="center" required style="display:unset;"> -->
+                   <input type = "text" id="uid" name = "uid" value="None" required style="display:none;">
+                   <input type = "text" id="billid" name = "billid" value="None" required style="display:none;">
+
+                   <div class="form-group">
+                     <input type="file" class="form-control-file btn btn-warning" id="image" name = "image" accept="image/*" required onclick="getUser()">
+                   </div>
+
+                   <div class="form-group">
+                      <select class="form-control" id="sel1" style="height:40px; margin:10px;" name="option">
+                        <!-- <option>1. Automatic Cropping - Recommended when high contrast with background.</option> -->
+                        <option>1. Manual Cropping - Recommended for Better accuracy.</option>
+                        <option>2. Image contains only Bill - No crop required.</option>
+                      </select>
+                   </div>
+                </form>
+
+                <button id="btn" style = "font-size:16px; text-align: center; text-decoration-color:black; cursor: pointer;" disabled onclick="upload_image()">Upload</button>
+            </div>
+          </div>
+
+          <br><br>
+          <form  action = "/demo_crop" target="_blank" style="margin-bottom:-50px;">
+            <button class="button">Demo</button>
+          </form>
+
         </div>
       </div>
-
-      <br><br>
-      <form  action = "/demo_crop" target="_blank" style="margin-bottom:-50px;">
-        <button class="button">Demo</button>
-      </form>
-
     </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</body>
+    </div>
+    </div>
+    </div>
+  </body>
 
-<!-- <script>
-function getUser(){
-  var user = firebase.auth().currentUser;
-  document.getElementById("uid").value = user.uid;
-}
-</script> -->
+
 </html>

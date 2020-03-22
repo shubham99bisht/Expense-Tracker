@@ -3,17 +3,23 @@ var transaction_json;
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
+
+		if(firebase.auth().currentUser.metadata.lastSignInTime == firebase.auth().currentUser.metadata.creationTime){
+			first_login()
+		}
+
 		myjson = 10;
 		path = window.location.pathname.split("/")
 		path = path[path.length-1]
 		if(path=="login" || path=="signup"){window.location.replace("transaction");}
 
-		if(user && path=="transaction"){fill_transaction_Details().then(function(data) {
-			console.log(data);
-			var myJSON = JSON.stringify(data);
-			console.log(myJSON);
-			localStorage.setItem("transaction_json", myJSON);
-		});}
+		if(user && path=="transaction"){fill_transaction_Details()}
+		// 	.then(function(data) {
+		// 	console.log(data);
+		// 	var myJSON = JSON.stringify(data);
+		// 	console.log(myJSON);
+		// 	localStorage.setItem("transaction_json", myJSON);
+		// });}
 		}
 	else {
 		path = window.location.pathname.split("/")
@@ -65,15 +71,33 @@ function new_account(){
 	return false;
 });
 
-userId = email.split("@")[0].split(".")[0]
+var username = email.split("@")[0]
 
-firebase.database().ref('Bills/' + userId + '/0').set({
-	Amount: 0
-});
-
-alert("Hello, you're registered: "+userId)
+alert("Hello, you're registered: "+username)
 
 }
+
+
+function first_login(){
+	var user = firebase.auth().currentUser;
+	var userId = user.uid;
+	var email = user.email;
+	var name = email.split("@")[0]
+
+	firebase.database().ref('Bills/'+userId).set({
+		"0000":0
+	});
+
+	firebase.database().ref('users/'+userId).set({
+		Email:email,
+		Name:name,
+		Prev_id:"0000"
+	});
+}
+
+
+
+
 
 // <!--===============================================================================================-->
 

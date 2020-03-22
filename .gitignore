@@ -2,3 +2,4 @@
 .atom
 .pyc
 __pycache__/
+Web_Interface/static/uploads/*

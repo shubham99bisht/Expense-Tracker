@@ -1,11 +1,4 @@
 
-
-//	create by nasir farhadi
-//	email : nasirfarhadi92@gmail.com
-//	Github : nasirfarhadi92
-
-
-
 	let i=2;
 
 	function getDotCircleInterval(){
@@ -21,22 +14,22 @@
 	    var src = "";
 	    switch(id) {
           case 1:
-            src = is_white ? "./static/images/features/2d 3d white.svg" : "./static/images/features/2d 3d.svg";
+            src = is_white ? "./static/images/features/2d 3d.svg" : "./static/images/features/2d 3d.svg";
             break;
           case 2:
-            src = is_white ? "./static/images/features/resolution white.svg" : "./static/images/features/resolution.svg";
+            src = is_white ? "./static/images/features/resolution.svg" : "./static/images/features/resolution.svg";
             break;
           case 3:
-            src = is_white ? "./static/images/features/mix n match white.svg" : "./static/images/features/mix n match.svg";
+            src = is_white ? "./static/images/features/mix n match.svg" : "./static/images/features/mix n match.svg";
             break;
           case 4:
-            src = is_white ? "./static/images/features/ar lips white.svg" : "./static/images/features/ar lips.svg";
+            src = is_white ? "./static/images/features/ar lips.svg" : "./static/images/features/ar lips.svg";
             break;
           case 5:
-            src = is_white ? "./static/images/features/model faces white.svg" : "./static/images/features/model faces.svg";
+            src = is_white ? "./static/images/features/model faces.svg" : "./static/images/features/model faces.svg";
             break;
           case 6:
-            src = is_white ? "./static/images/features/trak white.svg" : "./static/images/features/trak.svg";
+            src = is_white ? "./static/images/features/trak.svg" : "./static/images/features/trak.svg";
             break;
         }
         return src;

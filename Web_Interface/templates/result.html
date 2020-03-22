@@ -21,12 +21,72 @@
          color: initial;
      }
    </style>
+
+
+   <!-- FIREBASE -->
+   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+
+   	<script>
+   		// Your web app's Firebase configuration
+   		var firebaseConfig = {
+   			apiKey: "AIzaSyAkGRtjIhDYjybhdFUHmNM2FnCFA9z9-Gg",
+   			authDomain: "expense-tracker-7e30c.firebaseapp.com",
+   			databaseURL: "https://expense-tracker-7e30c.firebaseio.com",
+   			projectId: "expense-tracker-7e30c",
+   			storageBucket: "",
+   			messagingSenderId: "886344330580",
+   			appId: "1:886344330580:web:9c7cef3a3b72ef01d8ecc1"
+   		};
+   		// Initialize Firebase
+   		firebase.initializeApp(firebaseConfig);
+   	</script>
+   <script src="./static/scripts/firebase.js"></script>
+
+   <script>
+
+  function submit_form(){
+       // var user = firebase.auth().currentUser;
+       var userid = document.getElementById("uid").value;
+       var billid = document.getElementById("billid").value;
+       console.log(uid, billid);
+
+       var vendor = document.getElementById("vendor").value;
+       var address = document.getElementById("address").value;
+       var date = document.getElementById("date").value;
+       var amt = document.getElementById("total").value;
+       var items = document.getElementById("itm").value;
+
+       var e = document.getElementById("category");
+       var category = e.options[e.selectedIndex].text;
+       category = category.split(".")[0]
+
+       firebase.database().ref('Bills/'+userid+"/"+billid).update({
+        Company: vendor,
+        Address: address,
+     		Amount: amt,
+     		Category: category,
+        Date: date,
+        Items: items,
+        Status:0
+       }, function(error) {
+         if (error) {
+           alert("The write failed..."+error);
+         } else {
+           alert("Data saved successfully!");
+           window.close()
+         }
+       });
+       }
+   </script>
+
  </head>
 
  <body style="overflow:hidden">
     <div class="container" style="margin-left:50px; margin-top:20px;">
        <div class="row">
-         <div class="col-6"><a href="/" class="btn btn-primary" style="margin-left:15%;">Upload again?</a></div>
+         <div class="col-6"><a href="/upload" class="btn btn-primary" style="margin-left:15%;">Upload again?</a></div>
          <div class="col-6"><h3 style="margin-left:25%;">Please verify your details</h3></div>
        </div>
      </div>
@@ -40,8 +100,8 @@
         <div class="col-6"><div class="my-custom-scrollbar my-custom-scrollbar-primary">
           <form id="myForm" action="/submit" method="post">
             <div class="form-group">
-              <input type="hidden" value="1" id="total_item" name="total_item" >
-              <input type="hidden" value={{image_name}} name="id">
+              <input type="hidden" value={{uid}} id="uid">
+              <input type="hidden" value={{billid}} id="billid">
             </div>
 
             <div class="form-group">
@@ -64,13 +124,31 @@
               <label>Total</label>
               <input type="text" class="form-control" id="total" name="total">
             </div>
+            <!-- <div class="form-group"> -->
+            <div class="row">
+               <div class="col">  <label style="margin-top:9px;background-color: yellow;">Category</label></div>
+               <div class="col-md-9">
+               <select class="form-control" id="category" style="height:40px;" name="option">
+                 <option>0. Misc.</option>
+                 <option>1. Food</option>
+                 <option>2. Shopping</option>
+                 <option>3. Medicals</option>
+                 <option>4. Travel</option>
+                 <option>5. Banking/Insurance</option>
+                 <option>6. Govt Public Bills</option>
+                 <option>7. Ration</option>
+                 <option>8. Recharge/Bill Payment</option>
+               </select>
+             </div>
+            </div>
           </form>
           <!-- <button type="submit" class="btn btn-danger" form="myForm"  style="margin:10px;">Submit</button> -->
-          <button class="btn btn-danger" style="margin:10px;" onclick="submit_form()">Submit</button>
-          <br><p>NOTE: If you close this window without submitting, changes won't be saved!</p>
+          <br><button class="btn btn-danger" style="margin:10px;" onclick="submit_form()">Submit</button>
+
         </div></div>
       </div>
     </div>
+    <br><p style="text-align:center;"><strong>NOTE:</strong> If you close this window without submitting, Invoice and Details won't be saved!</p>
  </body>
 
    <script>
@@ -83,11 +161,4 @@
        document.getElementById("itm").value=js.items;
    </script>
 
-
-   <script>
-   submit_form = function(){
-     alert("Form submitted!")
-     window.close()
-   }
-   </script>
  </html>

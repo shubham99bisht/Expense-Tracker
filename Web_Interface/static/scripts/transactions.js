@@ -23,6 +23,8 @@ function fill_transaction_Details()
 			var a8 = '<div class="col-md-1"><div style="font-size:20px;"><i class="fa fa-trash" onclick="DeleteByID('
 			var a9 = ')"></i></div></div>';
 
+			var total = 0;
+
 			for (var transid in jsn)
 		  {
 				if (transid!=0){var g;
@@ -39,7 +41,11 @@ function fill_transaction_Details()
 					abc = abc +transid+ a77;
 					abc = abc + a8 +"'"+transid +"'"+ a9;
 					// console.log(abc);
-		      document.getElementById(g.id).innerHTML=abc;}
+		      document.getElementById(g.id).innerHTML=abc;
+					temp_total = parseInt(jsn[transid]["Amount"].split(",").join(""));
+					total += temp_total;
+				}
 		   }
+			 document.getElementById("gross_total").innerHTML=total;
 	});
 }

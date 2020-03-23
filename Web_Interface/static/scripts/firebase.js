@@ -14,12 +14,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		if(path=="login" || path=="signup"){window.location.replace("transaction");}
 
 		if(user && path=="transaction"){fill_transaction_Details()}
-		// 	.then(function(data) {
-		// 	console.log(data);
-		// 	var myJSON = JSON.stringify(data);
-		// 	console.log(myJSON);
-		// 	localStorage.setItem("transaction_json", myJSON);
-		// });}
+		
 		}
 	else {
 		path = window.location.pathname.split("/")

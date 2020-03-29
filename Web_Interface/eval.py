@@ -37,7 +37,7 @@ def tesseract_img(imgcv):
     return inference([text])
 
 def main(path_to_image, result_path = "temp"):
-    return {'company':'McD', 'address':'badlapur', 'date':'05/6/2020', 'items':'burgers, drinks, etc.', 'total':'550'}
+    return {'Company':'McD', 'Address':'badlapur', 'Date':'05/6/2020', 'Items':'burgers, drinks, etc.', 'Amount':'550'}
     imgcv = cv2.imread(path_to_image)
     json_data = tesseract_img(imgcv)
     # with open('results/{}.json'.format(result_path), 'w') as fp:

@@ -7,6 +7,10 @@ from eval import main
 import pytesseract
 import json
 
+# https://pypi.org/project/python-firebase/
+from firebase import firebase
+firebase = firebase.FirebaseApplication('https://expense-tracker-7e30c.firebaseio.com/', None)
+
 
 #Basic Web Pages
 #-------------------------------------------------------------------------------------------
@@ -98,14 +102,22 @@ def result_verification(billid):
 #-------------------------------------------------------------------------------------------
 @app.route("/random", methods=['GET', "POST"])
 def random():
-    #print(request.data)
     url = request.data.decode('UTF-8')
-    #print("URL printing: ",url)
-    os.system("wget \"{}\" -O temp.jpg".format(url))
+    # print("URL printing: ",url)
+
     useful = url.split("/o/")[1]
     uid,transid = useful.split("%2F")[0:2]
-    #transid = useful.split("%2F")[1]
-    main("temp.jpg", uid+"_"+transid)
+    print(uid, transid)
+    name = uid+"_"+transid+".png"
+
+    os.system("wget \"{}\" -O static/uploads/{}".format(url, name))
+    json = main(name)
+    json["Link"] = url
+    json["Status"] = 0
+    json["Category"] = "Misc"
+    print(json)
+
+    result = firebase.put('/Bills/{}/'.format(uid), transid, json)
     return "Job done!"
 
 # https://firebasestorage.googleapis.com/v0/b/expense-tracker-7e30c.appspot.com/o/Dt014Ow9GaPbZKwuOND7F6dCcxw1%2F1812%2Fstorage%2F2166-1715%2FDCIM%2FCamera%2FIMG_20200221_133437_HDR.jpg?alt=media&token=9e3346e4-8908-4afc-9f0d-e8646559c0ce

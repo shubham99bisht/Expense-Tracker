@@ -199,7 +199,7 @@
           <div class="upload-container">
             <div class="border-container">
                 <img class = "image-size" src="../static/images/upload.png">
-                <br><br><br>
+                <br><br>
                 <form action = "/upload_and_crop" method = "POST" enctype = "multipart/form-data" id="myForm">
                    <!-- <input type = "file" name = "image" accept="image/*" align="center" required style="display:unset;"> -->
                    <input type = "text" id="uid" name = "uid" value="None" required style="display:none;">
@@ -216,6 +216,11 @@
                         <option>2. Image contains only Bill - No crop required.</option>
                       </select>
                    </div>
+                   <!-- <div class="form-check">
+                     <input type="checkbox" class="form-check-input" name="checkbox">
+                     <label class="form-check-label" for="exampleCheck1">Verify later</label>
+                   </div> -->
+                   <!-- <br> -->
                 </form>
 
                 <button id="btn" style = "font-size:16px; text-align: center; text-decoration-color:black; cursor: pointer;" disabled onclick="upload_image()">Upload</button>

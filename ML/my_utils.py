@@ -92,7 +92,7 @@ def get_date(text):
 def pred_to_dict(text, pred, prob):
     # res = {"company": [], "date": [], "address": [], "total": [get_total(text)]}
     # res = {"company": [""],  "address":[""],"date": get_date(text), "billid":[""],"total": get_total(text),"items":[""]}
-    res = {"company": [""],  "address":[""],"date": get_date(text),"total": get_total(text),"items":[""]}
+    res = {"company": [""],  "address":[""],"items":[""]}
     curr, prv, ptr, ln = pred[0][0], 0, 1, len(text)
     while ptr<ln:
         while ptr<ln and pred[ptr][0]==curr:
@@ -105,16 +105,16 @@ def pred_to_dict(text, pred, prob):
         if ptr<ln: curr = pred[ptr][0]
         prv = ptr
         ptr +=1
-    final_res = {}
+    final_res = {"Date": get_date(text),"Amount": get_total(text)}
     res["company"].sort(key=lambda x: len(x), reverse=True)
-    final_res["company"] = postprocess(res["company"][0])
-    if final_res["company"]=="": final_res["company"]="Not Found"
+    final_res["Company"] = postprocess(res["company"][0])
+    if final_res["Company"]=="": final_res["Company"]="Not Found"
 
     res["address"].sort(key=lambda x: len(x), reverse=True)
-    final_res["address"] = res["address"][0]
-    if final_res["address"]=="": final_res["address"]="Not Found"
+    final_res["Address"] = res["address"][0]
+    if final_res["Address"]=="": final_res["Address"]="Not Found"
 
-    final_res["items"] = ",".join(str(x) for x in res["items"])
+    final_res["Items"] = ",".join(str(x) for x in res["items"])
 
     return final_res
 

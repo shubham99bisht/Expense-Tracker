@@ -1,37 +1,33 @@
-import numpy
-import regex
-from string import ascii_uppercase, ascii_lowercase, digits, punctuation
+import random, numpy, regex, re
+from difflib import SequenceMatcher
+from fuzzywuzzy import fuzz
+from date_regex import get_date
 
-#VOCAB = ascii_uppercase +digits + punctuation + " \t\n" # old model
+from string import ascii_uppercase, digits, ascii_lowercase
 VOCAB = ascii_uppercase +ascii_lowercase +digits + "&$-,.%=/: \t\n"
+small_vocab = ascii_uppercase +ascii_lowercase +digits + " $,\t&-.:"
 
-small_vocab = ascii_uppercase +ascii_lowercase +digits + punctuation+" "
+#"others":0,
+#"vendor":1,
+#"address":2,
+#"date":3,   X
+#"billid":4, X
+#"total":5,  X
+#"items":6
 
-def prRed(skk): print("\033[91m{}\033[00m" .format(skk), end="")
-def prGreen(skk): print("\033[92m{}\033[00m" .format(skk), end="")
-def prYellow(skk): print("\033[93m{}\033[00m" .format(skk), end="")
-def prBlue(skk): print("\033[34m{}\033[00m" .format(skk), end="")
-def prPurple(skk): print("\033[95m{}\033[00m" .format(skk), end="")
-def prWhite(skk): print("\033[37m{}\033[00m" .format(skk), end="")
-def prBlack(skk): print("\033[7m{}\033[00m" .format(skk), end="")
 
-def color_print(text, text_class):
-    for c, n in zip(text, text_class):
-        if n == 1:
-            prRed(c)
-        elif n == 2:
-            prGreen(c)
-        elif n == 3:
-            prBlue(c)
-        elif n == 4:
-            prYellow(c)
-        elif n == 5:
-            prPurple(c)
-        elif n == 6:
-            prBlack(c)
-        else:
-            prWhite(c)
-    print()
+##############################################################################
+# Functions in this file:
+# 1. preprocess
+# 2. postprocess
+# 3. get_total
+# 4. get_date
+# 5. pred_to_dict
+# -------------------------------
+# 6. robust_padding
+# 7. random_string
+##############################################################################
+
 
 def preprocess(string):
     new_string = ""
@@ -47,31 +43,56 @@ def postprocess(string):
             new_string += chr
     return new_string
 
-from string import ascii_uppercase, digits, punctuation, ascii_lowercase
 def get_total(text):
-    keywords = ["total", "subtotal", "charge"]
+    keywords = ["total", "subtotal", "charge", "amount"]
     suspects = []
     lines = text.split("\n")
-    #print(lines)
+
+    amt_vocab = ascii_lowercase + ascii_uppercase + digits + " ,."
     for line in lines:
-        while "\t" in line: line.remove("\t")
-        temp = [x for x in keywords if x in line.lower()]
-        if len(temp)>=1:
-            suspects += [line]
-    #print(suspects)
+        new_string = ""
+        for chr in line:
+            if chr in amt_vocab: new_string += chr
+
+        temp = False
+        for key in keywords:
+            ratio = fuzz.partial_ratio(new_string.lower(), key)
+            if ratio >=70: temp = True
+
+        if temp: suspects += [new_string]
+
     suspects = suspects[::-1]
-    #suspects.sort(key = lambda x: len(x), reverse = True)
-    nums = list(digits)
-    for x in suspects:
-        temp = [1 if y in x else 0 for y in nums]
-        #print(x,temp)
-        if any(temp):
-            return x
-    return "NIL"
+    print("\nSuspects for Total Amount: \n",suspects)
+    amount = []
+    for string in suspects:
+        li = string.strip().split()
+        for word in li:
+            try:
+                word = float(word)
+                amount += [word]
+            except: pass
+    return max(amount) if amount else "NIL"
+
+'''
+def get_date(text):
+    dates=set()
+    lines = text.split("\n")
+    for data in lines:
+        if 'w.e.f' in data.lower():
+            continue
+        temp = re.findall(regEx, data)
+        for i in temp: dates.add(i)
+
+    print(dates, type(dates))
+    dates = list(dates)
+    print("\nSuspected values for Date: ", dates)
+    return dates[0] if dates else "Not Found"
+'''
 
 def pred_to_dict(text, pred, prob):
     # res = {"company": [], "date": [], "address": [], "total": [get_total(text)]}
-    res = {"company": [""],  "address":[""],"date": [""], "billid":[""],"total": [""],"items":[""]}
+    # res = {"company": [""],  "address":[""],"date": get_date(text), "billid":[""],"total": get_total(text),"items":[""]}
+    res = {"company": [""],  "address":[""],"items":[""]}
     curr, prv, ptr, ln = pred[0][0], 0, 1, len(text)
     while ptr<ln:
         while ptr<ln and pred[ptr][0]==curr:
@@ -79,67 +100,42 @@ def pred_to_dict(text, pred, prob):
         sample = text[prv:ptr]
         if curr==1:res["company"]+=[sample]
         if curr==2:res["address"]+=[sample]
-        if curr==3:res["date"]+=[sample]
-        if curr==4:res["billid"]+=[sample]
-        if curr==5:res["total"]+=[sample]
         if curr==6:res["items"]+=[sample]
-        #if curr==4: total
+
         if ptr<ln: curr = pred[ptr][0]
         prv = ptr
         ptr +=1
-    final_res = {}
+    final_res = {"Date": get_date(text),"Amount": get_total(text)}
     res["company"].sort(key=lambda x: len(x), reverse=True)
-    final_res["company"] = postprocess(res["company"][0])
-
-    res["date"].sort(key=lambda x: len(x), reverse=True)
-    final_res["date"] = res["date"][0]
+    final_res["Company"] = postprocess(res["company"][0])
+    if final_res["Company"]=="": final_res["Company"]="Not Found"
 
     res["address"].sort(key=lambda x: len(x), reverse=True)
-    final_res["address"] = postprocess(res["address"][0])
+    final_res["Address"] = res["address"][0]
+    if final_res["Address"]=="": final_res["Address"]="Not Found"
 
-    res["billid"].sort(key=lambda x: len(x), reverse=True)
-    final_res["billid"] = res["billid"][0]
+    final_res["Items"] = ",".join(str(x) for x in res["items"])
 
-    final_res["total"] = ''.join(filter(lambda i: i.isdigit(), res["total"][0]))
-
-    final_res["items"] = ",".join(str(x) for x in res["items"])
-    #print("final_res: ",final_res)
     return final_res
-'''
 
-def pred_to_dict(text, pred, prob):
-    res = {"company": ("", 0),  "address": ("", 0),"date": ("", 0), "billid":("",0),"total": ("", 0),"items":("",0)}
-    keys = list(res.keys())
 
-    seps = [0] + (numpy.nonzero(numpy.diff(pred))[0] + 1).tolist() + [len(pred)]
-    for i in range(len(seps) - 1):
-        pred_class = pred[seps[i]] - 1
-        if pred_class == -1:
+###############################################################################
+# For training data generation
+def robust_padding(texts, labels):
+    maxlen = max(len(t) for t in texts)
+
+    for i, text in enumerate(texts):
+        if len(text) == maxlen:
             continue
 
-        new_key = keys[pred_class]
-        new_prob = prob[seps[i] : seps[i + 1]].max()
-        if new_prob > res[new_key][1]:
-            res[new_key] = (text[seps[i] : seps[i + 1]], new_prob)
+        pad_before = random.randint(0, maxlen - len(text))
+        pad_after = maxlen - pad_before - len(text)
 
-    return {k: regex.sub(r"[\t\n]", " ", v[0].strip()) for k, v in res.items()}
+        texts[i] = random_string(pad_before) + text + random_string(pad_after)
+        labels[i] = numpy.pad(
+            labels[i], (pad_before, pad_after), "constant", constant_values=0
+        )
 
-
-
-def pred_to_dict_orig(text, pred, prob):
-    res = {"company": ("", 0), "date": ("", 0), "address": ("", 0), "total": ("", 0)}
-    keys = list(res.keys())
-
-    seps = [0] + (numpy.nonzero(numpy.diff(pred))[0] + 1).tolist() + [len(pred)]
-    for i in range(len(seps) - 1):
-        pred_class = pred[seps[i]] - 1
-        if pred_class == -1:
-            continue
-
-        new_key = keys[pred_class]
-        new_prob = prob[seps[i] : seps[i + 1]].max()
-        if new_prob > res[new_key][1]:
-            res[new_key] = (text[seps[i] : seps[i + 1]], new_prob)
-
-    return {k: regex.sub(r"[\t\n]", " ", v[0].strip()) for k, v in res.items()}
-'''
+def random_string(n):
+    if n == 0: return ""
+    else: return " "*n

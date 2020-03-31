@@ -64,6 +64,8 @@ def upload_and_crop():
         option = request.form.get("option")
         option = int(option.split(".")[0])
 
+        # print(request.form.get("checkbox"))
+
         if option == 1:
             return render_template("crop.html", image_name=image_name)
         if option == 2:

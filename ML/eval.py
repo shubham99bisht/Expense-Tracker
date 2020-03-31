@@ -40,4 +40,6 @@ def main(path_to_image):
 
 if __name__ == "__main__":
     img_path = input("Enter path to image:")
-    main(img_path)
+    json = main(img_path)
+    for x in json.keys():
+        print(json[x])

@@ -11,11 +11,12 @@ function fill_chart_Details(){
 		  jsn = snapshot.val();
       console.log(jsn);
       var arr = [0, 10, 0, 0, 0, 0, 0, 0, 0];
+      var dict = {"Misc":0, "Food":1, "Shopping":2, "Medicals":3, "Travel":4, "Banking-Insurance":5, "Govt Public Bills":6, "Ration":7, "Recharge Payment":8 }
 
       for (var transid in jsn)
       {
         if (transid!=0){
-          arr[parseInt(jsn[transid]["Category"])]+= parseInt(jsn[transid]["Amount"].split(",").join(""));
+          arr[dict[jsn[transid]["Category"]]]+= parseInt(jsn[transid]["Amount"].split(",").join(""));
         }
       }
 
@@ -31,27 +32,29 @@ function fill_chart_Details(){
                   // data: [2000, 540, 9500, 3500],
                   data: arr,
                   backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
+                    // 'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 0, 0, 0.2)',
                       'rgba(54, 162, 235, 0.2)',
                       'rgba(255, 206, 86, 0.2)',
                       'rgba(75, 192, 192, 0.2)',
                       'rgba(153, 102, 255, 0.2)',
                       'rgba(255, 159, 64, 0.2)',
                       'rgb(0, 255, 0, 0.2)',
-                      'rgb(128, 255, 0, 0.2)',
+                      'rgb(255, 132, 255, 0.2)',
                       'rgb(255, 255, 128, 0.2)'
                   ],
                   // backgroundColor: ['rgb(255, 99, 132)','rgb(0, 255, 0)','rgb(255, 99, 132)','rgb(128, 255, 0)','rgb(0, 255, 255)','rgb(255, 255, 0)','rgb(255, 255, 128)'],
 
                   borderColor: [
-                      'rgba(255, 99, 132, 1)',
+                    // 'rgba(255, 99, 132, 1)',
+                      'rgba(255, 0, 0, 1)',
                       'rgba(54, 162, 235, 1)',
                       'rgba(255, 206, 86, 1)',
                       'rgba(75, 192, 192, 1)',
                       'rgba(153, 102, 255, 1)',
                       'rgba(255, 159, 64, 1)',
                       'rgb(0, 255, 0, 1)',
-                      'rgb(128, 255, 0, 1)',
+                      'rgb(255, 132, 255, 1)',
                       'rgb(255, 255, 128)'
                   ],
                   borderWidth: 1

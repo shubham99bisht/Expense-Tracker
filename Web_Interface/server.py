@@ -111,14 +111,24 @@ def random():
     uid,transid = useful.split("%2F")[0:2]
     print(uid, transid)
     name = uid+"_"+transid+".png"
-
+    '''
     os.system("wget \"{}\" -O static/uploads/{}".format(url, name))
     json = main(name)
     json["Link"] = url
     json["Status"] = 0
     json["Category"] = "Misc"
+    '''
+    json = {
+      "Address" : "Ground Floor, Shop no. 12 13 20 21& 22",
+      "Amount" : "99.76",
+      "Category" : "Shopping",
+      "Company" : "TAX INVOCE",
+      "Date" : "2/26/2020",
+      "Items" : "1 Reg HT PM Paneer",
+      "Link" : "https://firebasestorage.googleapis.com/v0/b/expense-tracker-7e30c.appspot.com/o/UUNs2qVregW6zrFJDQd7OEaKNV72%2F17%2FJPEG_20200331_182936.jpg?alt=media&token=ffabed8d-e1fd-43cf-b39f-5a07f1b86f8e",
+      "Status" : 0
+    }
     print(json)
-
     result = firebase.put('/Bills/{}/'.format(uid), transid, json)
     return "Job done!"
 

@@ -154,11 +154,11 @@
    <script>
        var js = JSON.parse('{{ json | tojson | safe}}');
        console.log(js);
-       document.getElementById("vendor").value=js.company;
-       document.getElementById("address").value=js.address;
-       document.getElementById("date").value=js.date;
-       document.getElementById("total").value=js.total;
-       document.getElementById("itm").value=js.items;
+       document.getElementById("vendor").value=js.Company;
+       document.getElementById("address").value=js.Address;
+       document.getElementById("date").value=js.Date;
+       document.getElementById("total").value=js.Amount;
+       document.getElementById("itm").value=js.Items;
    </script>
 
  </html>

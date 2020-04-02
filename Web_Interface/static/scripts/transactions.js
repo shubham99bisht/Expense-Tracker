@@ -32,9 +32,11 @@ function fill_transaction_Details()
 					g.classList.add("card");
 					g.classList.add("mystyle");
 		      g.id = transid;
-					// document.body.appendChild(g);
+
+					var items_string = jsn[transid]["Items"].split(",").slice(0,2).toString();
+
 		      document.getElementById("container").appendChild(g);
-		      var abc = a1+jsn[transid]["Date"] + a2+jsn[transid]["Company"] + a3+jsn[transid]["Items"] + a4+jsn[transid]["Amount"] + a5;
+		      var abc = a1+jsn[transid]["Date"] + a2+jsn[transid]["Company"] + a3 + items_string + a4+jsn[transid]["Amount"] + a5;
 					abc = abc + jsn[transid]["Link"] + a6;
 					if(jsn[transid]["Status"]==1){abc = abc+ '<i class="fa fa-check" aria-hidden="true" style="color:darkgreen"></i>'+ a7;}
 					if(jsn[transid]["Status"]==0){abc = abc+ '<i class="fa fa-circle" aria-hidden="true" style="color:orange"></i>'+ a7;}

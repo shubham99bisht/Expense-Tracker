@@ -132,7 +132,8 @@ def random():
     return "Job done!"
 
 # https://firebasestorage.googleapis.com/v0/b/expense-tracker-7e30c.appspot.com/o/Dt014Ow9GaPbZKwuOND7F6dCcxw1%2F1812%2Fstorage%2F2166-1715%2FDCIM%2FCamera%2FIMG_20200221_133437_HDR.jpg?alt=media&token=9e3346e4-8908-4afc-9f0d-e8646559c0ce
+if __name__ == '__main__':
+    app.run()
 
-app.run()
 # host="0.0.0.0", port="5000", debug=False
 #python -m flask run --host 0.0.0.0 --port 5000

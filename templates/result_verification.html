@@ -40,6 +40,20 @@
    		};
    		// Initialize Firebase
    		firebase.initializeApp(firebaseConfig);
+
+      function verify_password(){
+        var user = firebase.auth().currentUser;
+        var pass = prompt("Enter Password to modify Verified Bills");
+        var credential = firebase.auth.EmailAuthProvider.credential(user.email, pass);
+        user.reauthenticateWithCredential(credential)
+                        .then(function() {
+                          console.log("Passwords Matched");
+                          submit_form();})
+                        .catch(function(error) {
+                          console.log("Bugs"+error);
+                            alert(error.message);
+                        });
+      }
    	</script>
    <script src="../static/scripts/firebase.js"></script>
 
@@ -145,9 +159,12 @@
             </div>
             <!-- <div class="form-group"> -->
             <div class="row">
-               <div class="col">  <label style="margin-top:9px;background-color: yellow;">Category</label></div>
+               <div class="col">
+                 <!-- <label style="margin-top:9px;background-color: yellow;">Category</label> -->
+                 <label class="btn btn-warning">Category</label>
+               </div>
                <div class="col-md-9">
-               <select class="form-control" id="category" style="height:40px;" name="option">
+               <select class="form-control" id="category" style="height:40px;" name="option" required>
                  <option value="Misc">0. Misc.</option>
                  <option value="Food">1. Food</option>
                  <option value="Shopping">2. Shopping</option>
@@ -162,7 +179,7 @@
             </div>
           </form>
           <!-- <button type="submit" class="btn btn-danger" form="myForm"  style="margin:10px;">Submit</button> -->
-          <br><button class="btn btn-danger" style="margin:10px;" onclick="submit_form()">Submit</button>
+          <br><button class="btn btn-danger" style="margin:10px;" onclick="submit_form()" id="sub_btn">Submit</button>
 
         </div></div>
       </div>
@@ -190,6 +207,10 @@
        document.getElementById("itm").value=jsn["Items"];
        document.getElementById("left_image").src=jsn["Link"];
        document.getElementById("category").value = jsn["Category"];
+       if(jsn["Status"]=="1"){
+         document.getElementById("sub_btn").classList.add("disabled");
+         document.getElementById("sub_btn").onclick = verify_password;
+       }
      });}
    else {}
  });

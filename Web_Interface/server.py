@@ -126,7 +126,7 @@ def random():
       "Date" : "2/26/2020",
       "Items" : "1 Reg HT PM Paneer",
       "Link" : "https://firebasestorage.googleapis.com/v0/b/expense-tracker-7e30c.appspot.com/o/UUNs2qVregW6zrFJDQd7OEaKNV72%2F17%2FJPEG_20200331_182936.jpg?alt=media&token=ffabed8d-e1fd-43cf-b39f-5a07f1b86f8e",
-      "Status" : 0
+      "Status" : "1"
     }
     print(json)
     result = firebase.put('/Bills/{}/'.format(uid), transid, json)

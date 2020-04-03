@@ -3,20 +3,17 @@ var transaction_json;
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
-
-		if(firebase.auth().currentUser.metadata.lastSignInTime == firebase.auth().currentUser.metadata.creationTime){
-			first_login()
-		}
-
-		myjson = 10;
+		// if(firebase.auth().currentUser.metadata.lastSignInTime == firebase.auth().currentUser.metadata.creationTime){
+		// 	first_login()
+		// }
 		path = window.location.pathname.split("/")
 		path = path[path.length-1]
-		if(path=="login" || path=="signup"){window.location.replace("transaction");}
-
-		if(user && path=="transaction"){fill_transaction_Details()}
-		
+		if(path=="login"){window.location.replace("transaction");}
+		if(path=="signup"){first_login()}
+		if(user && path=="transaction"){fill_transaction_Details("all")}
 		}
-	else {
+
+	else{
 		path = window.location.pathname.split("/")
 		path = path[path.length-1]
 		if(path!="login" && path!="signup"){
@@ -41,12 +38,7 @@ function login_function(){
 // <!--===============================================================================================-->
 
 function logout_function(){
-	// window.warning("do you want to log out?");
-firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-}).catch(function(error) {
-  // An error happened.
-});
+		firebase.auth().signOut()
 }
 
 // <!--===============================================================================================-->
@@ -59,19 +51,12 @@ function new_account(){
       window.alert("\nPassword did not match: Please try again...")
       return false; }
 	firebase.auth().createUserWithEmailAndPassword(email, password1).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  window.alert(errorMessage);
-	return false;
-});
-
-var username = email.split("@")[0]
-
-alert("Hello, you're registered: "+username)
-
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  window.alert(errorMessage);
+				return false;
+			});
 }
-
 
 function first_login(){
 	var user = firebase.auth().currentUser;
@@ -79,19 +64,20 @@ function first_login(){
 	var email = user.email;
 	var name = email.split("@")[0]
 
-	firebase.database().ref('Bills/'+userId).set({
-		"0000":0
-	});
-
-	firebase.database().ref('users/'+userId).set({
+	firebase.database().ref('users/' + userId).set({
 		Email:email,
 		Name:name,
-		Prev_id:"0000"
-	});
+		Prev_id:"0"
+  }, function(error) {
+    if (error) {
+			alert(error);
+		} else {
+      alert("Hello, "+name+" you're successfully registered!")
+			firebase.auth().signOut()
+			window.location.replace("login");
+    }
+  });
 }
-
-
-
 
 
 // <!--===============================================================================================-->

@@ -10,15 +10,21 @@ function fill_chart_Details(){
 	ref.on('value', function(snapshot) {
 		  jsn = snapshot.val();
       console.log(jsn);
-      var arr = [0, 10, 0, 0, 0, 0, 0, 0, 0];
+      var arr = [0, 0, 0, 0, 0, 0, 0, 0, 0];
       var dict = {"Misc":0, "Food":1, "Shopping":2, "Medicals":3, "Travel":4, "Banking-Insurance":5, "Govt Public Bills":6, "Ration":7, "Recharge Payment":8 }
 
       for (var transid in jsn)
       {
         if (transid!=0){
+          // arr[jsn[transid]["Category"]]+= parseInt(jsn[transid]["Amount"].split(",").join(""));
           arr[dict[jsn[transid]["Category"]]]+= parseInt(jsn[transid]["Amount"].split(",").join(""));
         }
       }
+
+      for (var key in dict) {
+        document.getElementById(key).innerHTML= arr[dict[key]];
+            console.log(dict[key]);
+         }
 
       console.log(arr);
 
@@ -61,13 +67,14 @@ function fill_chart_Details(){
               }]
           },
           options: {
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero: true
+
+            legend: {display: true,
+                      position: 'bottom',
+                      labels: {
+                          fontSize: 15,
+                          boxWidth: 50
                       }
-                  }]
-              }
+                    }
           }
       });
     });

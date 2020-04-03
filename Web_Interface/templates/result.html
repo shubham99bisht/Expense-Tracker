@@ -59,8 +59,7 @@
        var items = document.getElementById("itm").value;
 
        var e = document.getElementById("category");
-       var category = e.options[e.selectedIndex].text;
-       category = category.split(".")[0]
+       var category = e.options[e.selectedIndex].value;
 
        firebase.database().ref('Bills/'+userid+"/"+billid).update({
         Company: vendor,
@@ -129,15 +128,15 @@
                <div class="col">  <label style="margin-top:9px;background-color: yellow;">Category</label></div>
                <div class="col-md-9">
                <select class="form-control" id="category" style="height:40px;" name="option">
-                 <option>0. Misc.</option>
-                 <option>1. Food</option>
-                 <option>2. Shopping</option>
-                 <option>3. Medicals</option>
-                 <option>4. Travel</option>
-                 <option>5. Banking/Insurance</option>
-                 <option>6. Govt Public Bills</option>
-                 <option>7. Ration</option>
-                 <option>8. Recharge/Bill Payment</option>
+                 <option value="Misc">0. Misc.</option>
+                 <option value="Food">1. Food</option>
+                 <option value="Shopping">2. Shopping</option>
+                 <option value="Medicals">3. Medicals</option>
+                 <option value="Travel">4. Travel</option>
+                 <option value="Banking-Insurance">5. Banking/Insurance</option>
+                 <option value="Govt Public Bills">6. Govt Public Bills</option>
+                 <option value="Ration">7. Ration</option>
+                 <option value="Recharge Payment">8. Recharge/Bill Payment</option>
                </select>
              </div>
             </div>

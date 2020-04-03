@@ -33,7 +33,7 @@
 
 
     	body {
-        overflow: hidden;
+        /* overflow: hidden; */
         padding: 0;
         margin: 0;
         background: #fff;
@@ -112,28 +112,36 @@
 	</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="./static/images/favicon.png">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-  <script>
-      function myFunction(){
-      alert("Data saved successfully!");
-      window.close()
-      }
-  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse" >
-  <div class="container-fluid" style="position: fixed; top: 0; width: 100%; overflow: hidden;">
-    <div class="navbar-header">
-      <!-- <a class="navbar-brand" style="text-align:center;">Please verify your Invoice Details</a> -->
-      <!-- <a style="text-align:center;">Please verify your Invoice Details</a> -->
-    </div></div>
-    <h3 style="text-align:center; margin-top:10px;color:white;">Please verify your Invoice Details</h3>
-</nav>
+  <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color:#6bc8f9;">
+    <!-- Brand/logo -->
+    <ul class="navbar-nav mr-auto">
+     <li><a class="navbar-brand" href="/"><img src="./static/images/logo.png" alt="Logo" style="height:40px;"></a></li>
+    </ul>
+    <!-- Links -->
+    <ul class="navbar-nav mr-right">
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="/">Stimulate Attack</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/analysis">Analysis</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/charts">Feature Descriptions</a>
+      </li>
+    </ul>
+  </nav>
+  <br><br><br>
+
+  <h3 style="text-align:center; margin-top:-5px;">Please verify your Invoice Details</h3>
 
 
 <!-- Left Card -->
@@ -170,4 +178,10 @@
 </div></div>
 
 </body>
+  <script>
+      function myFunction(){
+      alert("Data saved successfully!");
+      window.close()
+      }
+  </script>
 </html>

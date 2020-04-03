@@ -1,5 +1,5 @@
-console.log("imported");
-function fill_transaction_Details(category)
+
+function fill_transaction_Details()
 {
 	var jsn = "";
 	var user = firebase.auth().currentUser;
@@ -27,7 +27,7 @@ function fill_transaction_Details(category)
 
 			for (var transid in jsn)
 		  {
-				if (transid!=0 && (category=="all" || jsn[transid]["Category"] == category)){var g;
+				if (transid!=0){var g;
 		      g= document.createElement('div');
 					g.classList.add("card");
 					g.classList.add("mystyle");

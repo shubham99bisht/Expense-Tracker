@@ -37,6 +37,8 @@ def preprocess(string):
     return new_string
 
 def postprocess(string):
+    string = string.replace("\n"," ")
+    string = string.replace("\t"," ")
     new_string = ""
     for chr in string:
         if chr in small_vocab:
@@ -71,7 +73,7 @@ def get_total(text):
                 word = float(word)
                 amount += [word]
             except: pass
-    return max(amount) if amount else "NIL"
+    return str(max(amount)) if amount else "NIL"
 
 '''
 def get_date(text):
@@ -111,7 +113,7 @@ def pred_to_dict(text, pred, prob):
     if final_res["Company"]=="": final_res["Company"]="Not Found"
 
     res["address"].sort(key=lambda x: len(x), reverse=True)
-    final_res["Address"] = res["address"][0]
+    final_res["Address"] = postprocess(res["address"][0])
     if final_res["Address"]=="": final_res["Address"]="Not Found"
 
     final_res["Items"] = ",".join(str(x) for x in res["items"])

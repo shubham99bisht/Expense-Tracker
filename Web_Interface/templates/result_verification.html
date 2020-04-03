@@ -58,8 +58,7 @@
        var items = document.getElementById("itm").value;
 
        var e = document.getElementById("category");
-       var category = e.options[e.selectedIndex].text;
-       category = category.split(".")[0]
+       var category = e.options[e.selectedIndex].value;
 
        firebase.database().ref('Bills/'+userid+"/"+billid).update({
         Company: vendor,
@@ -83,6 +82,28 @@
  </head>
 
  <body style="overflow:hidden">
+
+   <nav class="navbar navbar-expand-sm fixed-top" style="background-color:#6bc8f9; height:70px;">
+     <!-- Brand/logo -->
+     <ul class="navbar-nav mr-auto">
+      <li><a class="navbar-brand" href="/"><img src="../static/images/logo.png" alt="Logo" style="height:50px;"></a></li>
+     </ul>
+
+     <!-- Links -->
+     <ul class="navbar-nav mr-right">
+       <li class="nav-item dropdown">
+         <a class="nav-link" href="/" style="color:white">Home</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="/transaction"  style="color:white">Transaction Page</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" onclick="logout_function()" style="color:white">Logout</a>
+       </li>
+     </ul>
+   </nav>
+
+
     <div class="container" style="margin-left:50px; margin-top:20px;">
        <div class="row">
          <div class="col"><h3 style="text-align: center;" onclick="fetch_data()">Please verify your details</h3></div>
@@ -127,15 +148,15 @@
                <div class="col">  <label style="margin-top:9px;background-color: yellow;">Category</label></div>
                <div class="col-md-9">
                <select class="form-control" id="category" style="height:40px;" name="option">
-                 <option value="0">0. Misc.</option>
-                 <option value="1">1. Food</option>
-                 <option value="2">2. Shopping</option>
-                 <option value="3">3. Medicals</option>
-                 <option value="4">4. Travel</option>
-                 <option value="5">5. Banking/Insurance</option>
-                 <option value="6">6. Govt Public Bills</option>
-                 <option value="7">7. Ration</option>
-                 <option value="8">8. Recharge/Bill Payment</option>
+                 <option value="Misc">0. Misc.</option>
+                 <option value="Food">1. Food</option>
+                 <option value="Shopping">2. Shopping</option>
+                 <option value="Medicals">3. Medicals</option>
+                 <option value="Travel">4. Travel</option>
+                 <option value="Banking-Insurance">5. Banking/Insurance</option>
+                 <option value="Govt Public Bills">6. Govt Public Bills</option>
+                 <option value="Ration">7. Ration</option>
+                 <option value="Recharge Payment">8. Recharge/Bill Payment</option>
                </select>
              </div>
             </div>

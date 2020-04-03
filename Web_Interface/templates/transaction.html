@@ -79,6 +79,25 @@
                  </button>
                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Filter
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" onclick="fill_transaction_Details('all')">Show All Category</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" onclick="fill_transaction_Details('Misc')">Misc</a>
+                          <a class="dropdown-item" onclick="fill_transaction_Details('Food')">Food</a>
+                          <a class="dropdown-item" onclick="fill_transaction_Details('Shopping')">Shopping</a>
+                          <a class="dropdown-item" onclick="fill_transaction_Details('Medicals')">Medicals</a>
+                          <a class="dropdown-item" onclick="fill_transaction_Details('Banking-Insurance')">Banking-Insurance</a>
+                          <a class="dropdown-item" onclick="fill_transaction_Details('Govt Public Bills')">Govt Public Bills</a>
+                          <a class="dropdown-item" onclick="fill_transaction_Details('Ration')">Ration</a>
+                          <a class="dropdown-item" onclick="fill_transaction_Details('Recharge Payment')">Recharge Payment</a>
+                        </div>
+                      </li>
+
                        <li class="nav-item">
                           <a class="nav-link" href="upload" target="_blank">Upload New</a>
                        </li>
@@ -86,7 +105,7 @@
                           <a class="nav-link" href="chart">Summary</a>
                        </li>
                        <li class="nav-item">
-                          <a class="nav-link" href="#">Export Data</a>
+                          <a class="nav-link" onclick="alert('Not yet implemented!')">Export Data</a>
                        </li>
                        <li class="nav-item">
                           <button type="button" class="btn btn-warning" onclick="logout_function()">Log Out</button>
@@ -111,7 +130,7 @@
 <br><br>
 <br><br>
 <br><br>
-<h2 style="text-align:center;">Transaction Details</h2>
+<h2 style="text-align:center;">Transaction Details : All Categories</h2>
 
 
 <div class="card disabled" style="max-width: 80%; margin-bottom: 20px;padding:10px; height:55px;">

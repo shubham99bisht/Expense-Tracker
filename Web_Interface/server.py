@@ -5,7 +5,6 @@ import shutil, os
 app = Flask(__name__)
 from eval import main
 import pytesseract
-import json
 
 # https://pypi.org/project/python-firebase/
 from firebase import firebase

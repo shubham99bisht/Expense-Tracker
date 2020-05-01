@@ -5,6 +5,7 @@ import shutil, os
 app = Flask(__name__)
 from eval import main
 import pytesseract
+from classify_item import check_item_category
 
 # https://pypi.org/project/python-firebase/
 from firebase import firebase
@@ -97,7 +98,18 @@ def crop_and_result():
 @app.route("/result_verification/<billid>")
 def result_verification(billid):
     billid = int(billid)
-    return render_template("result_verification.html",billid=billid)
+    return render_template("result_verification.html", billid=billid)
+
+# Item Categorisation
+#-------------------------------------------------------------------------------------------
+@app.route("/categorisation/<billid>")
+def categorisation(billid):
+    billid = int(billid)
+    # Read firebase to get items
+    items = ["potato chip"]
+    for item in items:
+        check_item_category(item)
+    return render_template("categorisation.html", json=final_json)
 
 # Android Specific Functions
 #-------------------------------------------------------------------------------------------
@@ -110,7 +122,7 @@ def random():
     uid,transid = useful.split("%2F")[0:2]
     print(uid, transid)
     name = uid+"_"+transid+".png"
-    '''
+
     os.system("wget \"{}\" -O static/uploads/{}".format(url, name))
     json = main(name)
     json["Link"] = url
@@ -127,13 +139,14 @@ def random():
       "Link" : "https://firebasestorage.googleapis.com/v0/b/expense-tracker-7e30c.appspot.com/o/UUNs2qVregW6zrFJDQd7OEaKNV72%2F17%2FJPEG_20200331_182936.jpg?alt=media&token=ffabed8d-e1fd-43cf-b39f-5a07f1b86f8e",
       "Status" : "0"
     }
-    print(json)
+    '''
+    # print(json)
     result = firebase.put('/Bills/{}/'.format(uid), transid, json)
     return "Job done!"
 
 # https://firebasestorage.googleapis.com/v0/b/expense-tracker-7e30c.appspot.com/o/Dt014Ow9GaPbZKwuOND7F6dCcxw1%2F1812%2Fstorage%2F2166-1715%2FDCIM%2FCamera%2FIMG_20200221_133437_HDR.jpg?alt=media&token=9e3346e4-8908-4afc-9f0d-e8646559c0ce
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 
 # host="0.0.0.0", port="5000", debug=False
 #python -m flask run --host 0.0.0.0 --port 5000

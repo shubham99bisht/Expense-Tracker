@@ -102,13 +102,14 @@ def result_verification(billid):
 
 # Item Categorisation
 #-------------------------------------------------------------------------------------------
-@app.route("/categorisation/<billid>")
-def categorisation(billid):
-    billid = int(billid)
-    # Read firebase to get items
-    items = ["potato chip"]
+@app.route("/categorisation/<uid>/<billid>")
+def categorisation(uid, billid):
+    items = firebase.get("/Bills/{}/{}/Items".format(uid, billid), None)
+    items = items.split(",")
+    print(items)
+    final_json = {}
     for item in items:
-        check_item_category(item)
+        final_json[item] = check_item_category(item)
     return render_template("categorisation.html", json=final_json)
 
 # Android Specific Functions

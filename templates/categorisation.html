@@ -2,85 +2,108 @@
  <html>
  <head>
    <title>Result Verification Page</title>
-   <link rel="shortcut icon" href="../static/images/favicon.png">
+   <link rel="shortcut icon" href="../../static/images/favicon.png">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   <style>
-     a.button {
-         -webkit-appearance: button;
-         -moz-appearance: button;
-         appearance: button;
-
-         text-decoration: none;
-         color: initial;
-     }
-   </style>
-
-   <!-- FIREBASE -->
-   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
-
-   	<script>
-   		// Your web app's Firebase configuration
-   		var firebaseConfig = {
-   			apiKey: "AIzaSyAkGRtjIhDYjybhdFUHmNM2FnCFA9z9-Gg",
-   			authDomain: "expense-tracker-7e30c.firebaseapp.com",
-   			databaseURL: "https://expense-tracker-7e30c.firebaseio.com",
-   			projectId: "expense-tracker-7e30c",
-   			storageBucket: "",
-   			messagingSenderId: "886344330580",
-   			appId: "1:886344330580:web:9c7cef3a3b72ef01d8ecc1"
-   		};
-   		// Initialize Firebase
-   		firebase.initializeApp(firebaseConfig);
-
-   	</script>
-   <script src="../static/scripts/firebase.js"></script>
 
  </head>
 
+ <body>
 
-<body>
-  <div class=container style="width:70%; margin-top:50px;">
-    <div class="card">
-      <div class="card-header">
-        <h2>Items Classified into Categories </h2>
-      </div>
-      <div class="card-body">
-        <div class="alert alert-primary" role="alert">Item Name</div>
-        <div class="alert alert-warning" role="alert">Item Name</div>
-      </div>
-    </div>
-  </div>  
-</body>
+    <nav class="navbar navbar-expand-sm fixed-top" style="background-color:#6bc8f9; height:70px;">
+      <!-- Brand/logo -->
+      <ul class="navbar-nav mr-auto">
+       <li><a class="navbar-brand" href="/"><img src="../../static/images/logo.png" alt="Logo" style="height:50px;"></a></li>
+      </ul>
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-right">
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="/" style="color:white">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/transaction"  style="color:white">Transaction Page</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="logout_function()" style="color:white">Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+    <br><br><br>
+
+   <div class=container style="width:70%; margin-top:50px;">
+     <div class="card">
+       <div class="card-header">
+         <h5>Category Labels </h5>
+
+         <div class="row" style="margin-left:50px;">
+
+             <div class="column col-3 media">
+               <img src="../../static/images/green.png" class="mr-3">
+               <div class="media-body">
+                 <p class="mt-0">Grocery</p>
+               </div>
+             </div>
+
+             <div class="column col-3 media" >
+               <img src="../../static/images/blue.png" class="mr-3">
+               <div class="media-body">
+                 <p class="mt-0">Food</p>
+               </div>
+             </div>
+
+             <div class="column col-3 media">
+               <img src="../../static/images/yellow.png" class="mr-3">
+               <div class="media-body">
+                 <p class="mt-0">Clothing</p>
+               </div>
+             </div>
+
+             <div class="column col-3 media">
+               <img src="../../static/images/red.png" class="mr-3">
+               <div class="media-body">
+                 <p class="mt-0">Misc</p>
+               </div>
+             </div>
+
+         </div>
+
+       </div>
+     </div>
+   </div>
+
+   <div class=container style="width:70%; margin-top:50px;">
+     <div class="card">
+       <div class="card-header">
+         <h2>Items Classified into Categories </h2>
+       </div>
+       <div class="card-body" id="maincontainer">
+       </div>
+     </div>
+   </div>
+ </body>
 
 
- <!-- <script>
- firebase.auth().onAuthStateChanged(function(user) {
-   if (user) {
-     var billid = {{billid}};
-     var jsn = "";
-     var user = firebase.auth().currentUser;
-     var uid = user.uid;
-     var ref = firebase.database().ref('Bills/'+uid+'/'+billid);
-     console.log(billid, uid);
+<script type="text/javascript">
+ var js = JSON.parse('{{ json | tojson | safe}}');
+ console.log(js);
+ main_node = document.getElementById('maincontainer');
+ for (var key in js){
+       var attrName = key;
+       var attrValue = js[key];
 
-     ref.on('value', function(snapshot) {
-       jsn = snapshot.val();
-       document.getElementById("uid").value=uid;
-       document.getElementById("vendor").value=jsn["Company"];
-       document.getElementById("address").value=jsn["Address"];
-       document.getElementById("date").value=jsn["Date"];
-       document.getElementById("total").value=jsn["Amount"];
-       document.getElementById("itm").value=jsn["Items"];
-       document.getElementById("left_image").src=jsn["Link"];
-       document.getElementById("category").value = jsn["Category"];
-       if(jsn["Status"]=="1"){
-         document.getElementById("sub_btn").classList.add("disabled");
-         document.getElementById("sub_btn").onclick = verify_password;
-       }
-     });}
-   else {}
- });
- </script> -->
+       if(attrValue=="Grocery"){var color="alert-success";}
+       if(attrValue=="Food"){var color="alert-primary";}
+       if(attrValue=="Clothing"){var color="alert-warning";}
+       if(attrValue=="Misc"){var color="alert-danger";}
+
+       var node = document.createElement("div");
+       node.classList.add("alert");
+       node.classList.add(color);
+       node.innerHTML = attrName;
+
+       main_node.appendChild(node);
+   }
+</script>
+
  </html>

@@ -43,7 +43,7 @@ def check_item_category(item):
         cat = "Misc"
         pr=misc_ratio
 
-    return
+    return cat
 
     # print("\t\t\n Item Category: {} \t Confidence: {}".format(cat, pr))
 

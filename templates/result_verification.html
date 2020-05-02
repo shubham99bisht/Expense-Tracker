@@ -161,7 +161,7 @@
             <div class="row">
                <div class="col">
                  <!-- <label style="margin-top:9px;background-color: yellow;">Category</label> -->
-                 <a class="btn btn-warning" href="/categorisation/{{billid}}" target="_blank">Show Item Categories</a>
+                 <a class="btn btn-warning" href="/categorisation/uid/billid" target="_blank" id="cat_button">Show Item Categories</a>
                </div>
                <!-- <div class="col-md-9">
                <select class="form-control" id="category" style="height:40px;" name="option" required>
@@ -206,7 +206,10 @@
        document.getElementById("total").value=jsn["Amount"];
        document.getElementById("itm").value=jsn["Items"];
        document.getElementById("left_image").src=jsn["Link"];
-       document.getElementById("category").value = jsn["Category"];
+
+       link = "/categorisation/"+uid+"/"+billid
+       document.getElementById("cat_button").href = link
+
        if(jsn["Status"]=="1"){
          document.getElementById("sub_btn").classList.add("disabled");
          document.getElementById("sub_btn").onclick = verify_password;

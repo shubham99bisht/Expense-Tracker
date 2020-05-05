@@ -14,7 +14,7 @@ Team: Shubham Bisht<br/>
 
 This repository contains three directories. Inside each folder there are documentations of the method we adopted and guide of usage.
 
-- **Folder 1 - Bill Label Tool**: A GUI tool for efficiently labelling various entities in huge dataset of invoice images. 
+- **Folder 1 - Bill Label Tool**: A GUI tool for efficiently labelling various entities in huge dataset of invoice images.
 - **Folder 2 - ML**: Bi-LSTM Approach for Character-wise classification of invoice text into key entities.
 - **Folder 3 - Web UI**: A user interface for uploading Invoices and receiving results in a HTML form
 <br/>
@@ -33,11 +33,11 @@ For the information extraction task, each image in the dataset is annotated with
   "address": "11302 EUCLID AVENUE, CLEVELAND, OH (216) 229-0749",
   "date": "14/03/2015",
   "invoice id":"5628391",
-  "total": "4.95", 
+  "total": "4.95",
   "items": "WhiteMochaV"
 }
 ```
 
 ## Results
 
-![](Web_Interface/Media/demo_result.png)
+![](Media/demo_result.png)

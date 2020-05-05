@@ -72,7 +72,8 @@
        var items = document.getElementById("itm").value;
 
        var e = document.getElementById("category");
-       var category = e.options[e.selectedIndex].value;
+       // var category = e.options[e.selectedIndex].value;
+       var category = "Misc";
 
        firebase.database().ref('Bills/'+userid+"/"+billid).update({
         Company: vendor,

@@ -46,7 +46,7 @@
 
    <script>
 
-  function submit_form(){
+  function submit_form(status_value){
        // var user = firebase.auth().currentUser;
        var userid = document.getElementById("uid").value;
        var billid = document.getElementById("billid").value;
@@ -59,7 +59,8 @@
        var items = document.getElementById("itm").value;
 
        var e = document.getElementById("category");
-       var category = e.options[e.selectedIndex].value;
+       // var category = e.options[e.selectedIndex].value;
+       var category = "Misc";
 
        firebase.database().ref('Bills/'+userid+"/"+billid).update({
         Company: vendor,
@@ -68,7 +69,7 @@
      		Category: category,
         Date: date,
         Items: items,
-        Status:1
+        Status:status_value
        }, function(error) {
          if (error) {
            alert("The write failed..."+error);
@@ -126,7 +127,7 @@
             <!-- <div class="form-group"> -->
             <div class="row">
                <div class="col">
-                 <a style="margin-top:9px;background-color: yellow;" href="/categorisation/{{uid}}/{{billid}}" target="_blank">Show Item Categories</a>
+                 <a class="btn btn-warning" href="/categorisation/{{uid}}/{{billid}}" target="_blank">Show Item Categories</a>
                </div>
                <!-- <div class="col-md-9">
                <select class="form-control" id="category" style="height:40px;" name="option">
@@ -144,7 +145,7 @@
             </div>
           </form>
           <!-- <button type="submit" class="btn btn-danger" form="myForm"  style="margin:10px;">Submit</button> -->
-          <br><button class="btn btn-danger" style="margin:10px;" onclick="submit_form()">Submit</button>
+          <br><button class="btn btn-danger" style="margin:10px;" onclick="submit_form(1)">Submit</button>
 
         </div></div>
       </div>
@@ -160,6 +161,7 @@
        document.getElementById("date").value=js.Date;
        document.getElementById("total").value=js.Amount;
        document.getElementById("itm").value=js.Items;
+       submit_form(0);
    </script>
 
  </html>

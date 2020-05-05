@@ -116,7 +116,7 @@ def pred_to_dict(text, pred, prob):
     final_res["Address"] = postprocess(res["address"][0])
     if final_res["Address"]=="": final_res["Address"]="Not Found"
 
-    final_res["Items"] = ",".join(str(x) for x in res["items"])
+    final_res["Items"] = ", ".join(str(x) for x in res["items"])
 
     return final_res
 
